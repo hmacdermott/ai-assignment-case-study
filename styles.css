@@ -13,13 +13,28 @@
     --wl-border: #E5E7EB;
     --wl-text: #1F2937;
     --wl-text-light: #4B5563;
+    --bg-primary: #ffffff;
+    --bg-secondary: #F3F4F6;
+}
+
+[data-theme="dark"] {
+    --wl-navy: #4A90E2;
+    --wl-navy-dark: #357ABD;
+    --wl-gray: #9CA3AF;
+    --wl-light-gray: #1F2937;
+    --wl-border: #374151;
+    --wl-text: #E5E7EB;
+    --wl-text-light: #D1D5DB;
+    --bg-primary: #111827;
+    --bg-secondary: #1F2937;
 }
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
     line-height: 1.6;
     color: var(--wl-text);
-    background: white;
+    background: var(--bg-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Typography */
@@ -136,7 +151,6 @@ nav a:hover {
     background: var(--wl-navy);
     color: white;
     padding: 5rem 0;
-    text-align: center;
 }
 
 .hero h1 {
@@ -151,8 +165,6 @@ nav a:hover {
     margin-bottom: 1.5rem;
     color: rgba(255, 255, 255, 0.95);
     max-width: 900px;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 .hero p {
@@ -160,7 +172,7 @@ nav a:hover {
     line-height: 1.7;
     color: rgba(255, 255, 255, 0.9);
     max-width: 800px;
-    margin: 0 auto 2rem;
+    margin-bottom: 2rem;
 }
 
 /* Pattern Cards */
@@ -935,4 +947,148 @@ footer {
     padding: 0.2rem 0.4rem;
     font-family: 'Monaco', 'Menlo', 'Consolas', monospace;
     font-size: 0.9em;
+}
+
+/* Theme Toggle and Utility Buttons */
+.utility-buttons {
+    position: fixed;
+    top: 80px;
+    right: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    z-index: 90;
+}
+
+.utility-btn {
+    background: var(--wl-navy);
+    color: white;
+    border: none;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    transition: all 0.2s;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.utility-btn:hover {
+    background: var(--wl-navy-dark);
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.utility-btn:active {
+    transform: scale(0.95);
+}
+
+@media (max-width: 768px) {
+    .utility-buttons {
+        top: auto;
+        bottom: 1rem;
+        right: 1rem;
+        flex-direction: row;
+    }
+    
+    .utility-btn {
+        width: 44px;
+        height: 44px;
+        font-size: 1.1rem;
+    }
+}
+
+/* Dark mode specific adjustments */
+[data-theme="dark"] .pattern-card,
+[data-theme="dark"] .case-card,
+[data-theme="dark"] .resource-card,
+[data-theme="dark"] .discipline-button,
+[data-theme="dark"] .accordion-header,
+[data-theme="dark"] .form-group,
+[data-theme="dark"] .form-wizard {
+    background: var(--bg-secondary);
+    border-color: var(--wl-border);
+}
+
+[data-theme="dark"] input,
+[data-theme="dark"] select,
+[data-theme="dark"] textarea {
+    background: var(--bg-primary);
+    color: var(--wl-text);
+    border-color: var(--wl-border);
+}
+
+[data-theme="dark"] .pedagogy-panel {
+    background: var(--bg-primary);
+    border-color: var(--wl-border);
+}
+
+[data-theme="dark"] .output-display {
+    background: var(--bg-primary);
+    border-color: var(--wl-border);
+}
+
+[data-theme="dark"] .output-display pre {
+    background: var(--bg-secondary);
+    color: var(--wl-text);
+}
+
+/* Print Styles */
+@media print {
+    .utility-buttons {
+        display: none !important;
+    }
+    
+    header {
+        position: static;
+        background: white;
+        color: var(--wl-navy);
+        border-bottom: 2px solid var(--wl-navy);
+    }
+    
+    header nav {
+        display: none;
+    }
+    
+    .hero {
+        background: white;
+        color: var(--wl-navy);
+        border-bottom: 2px solid var(--wl-navy);
+        page-break-after: avoid;
+    }
+    
+    .pattern-card,
+    .case-card,
+    .resource-card {
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+    
+    .accordion-content,
+    .resource-content {
+        display: block !important;
+        max-height: none !important;
+    }
+    
+    .accordion-header::after {
+        display: none;
+    }
+    
+    button {
+        display: none;
+    }
+    
+    a {
+        text-decoration: underline;
+    }
+    
+    a[href^="http"]:after {
+        content: " (" attr(href) ")";
+        font-size: 0.8em;
+        color: var(--wl-gray);
+    }
 }

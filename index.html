@@ -2276,12 +2276,83 @@ function AssignmentDesigner() {
 }
 
 // ============================================================================
+// UTILITY BUTTONS (THEME, SHARE, PRINT)
+// ============================================================================
+
+function UtilityButtons() {
+    const [theme, setTheme] = useState('light');
+
+    const toggleTheme = () => {
+        const newTheme = theme === 'light' ? 'dark' : 'light';
+        setTheme(newTheme);
+        document.documentElement.setAttribute('data-theme', newTheme);
+    };
+
+    const handleShare = async () => {
+        if (navigator.share) {
+            try {
+                await navigator.share({
+                    title: 'Teaching with AI Boundaries',
+                    text: 'A Framework for Meaningful Learning',
+                    url: window.location.href
+                });
+            } catch (err) {
+                if (err.name !== 'AbortError') {
+                    console.log('Share failed:', err);
+                    // Fallback: copy URL to clipboard
+                    navigator.clipboard.writeText(window.location.href);
+                    alert('Link copied to clipboard!');
+                }
+            }
+        } else {
+            // Fallback: copy URL to clipboard
+            navigator.clipboard.writeText(window.location.href);
+            alert('Link copied to clipboard!');
+        }
+    };
+
+    const handlePrint = () => {
+        window.print();
+    };
+
+    return (
+        <div className="utility-buttons">
+            <button
+                className="utility-btn"
+                onClick={toggleTheme}
+                title={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
+                aria-label={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
+            >
+                {theme === 'light' ? '🌙' : '☀️'}
+            </button>
+            <button
+                className="utility-btn"
+                onClick={handleShare}
+                title="Share this page"
+                aria-label="Share this page"
+            >
+                🔗
+            </button>
+            <button
+                className="utility-btn"
+                onClick={handlePrint}
+                title="Print to PDF"
+                aria-label="Print to PDF"
+            >
+                🖨️
+            </button>
+        </div>
+    );
+}
+
+// ============================================================================
 // MAIN APP COMPONENT
 // ============================================================================
 
 function App() {
     return (
         <div>
+            <UtilityButtons />
             <Header />
             <Hero />
             <ThreeStagePattern />
