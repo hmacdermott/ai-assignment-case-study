@@ -331,7 +331,7 @@ button.secondary:hover, .button.secondary:hover {
 }
 
 .tab:hover {
-    color: var(--wl-navy);
+    color: var(--wl-text);
 }
 
 .tab.active {
@@ -597,6 +597,20 @@ textarea:focus,
 select:focus {
     outline: none;
     border-color: var(--wl-navy);
+}
+
+input.validation-error,
+textarea.validation-error,
+select.validation-error {
+    border: 2px solid #DC2626;
+    background: #FEF2F2;
+}
+
+[data-theme="dark"] input.validation-error,
+[data-theme="dark"] textarea.validation-error,
+[data-theme="dark"] select.validation-error {
+    border: 2px solid #DC2626;
+    background: #3A1F1F;
 }
 
 textarea {
@@ -1246,7 +1260,7 @@ footer {
 }
 
 [data-theme="dark"] .tab:hover {
-    color: var(--wl-navy);
+    color: var(--wl-text);
 }
 
 /* Hero link styling */
@@ -1291,8 +1305,10 @@ textarea.error {
 }
 
 .checkbox-group.error,
-.radio-group.error {
-    border: 1px solid #DC2626;
+.radio-group.error,
+.checkbox-group.validation-error,
+.radio-group.validation-error {
+    border: 2px solid #DC2626;
     padding: 1rem;
     border-radius: 4px;
     background-color: rgba(220, 38, 38, 0.05);

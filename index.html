@@ -245,7 +245,7 @@ function Header() {
                             Examples
                         </a>
                         <a href="#designer" onClick={(e) => { e.preventDefault(); scrollToSection('designer'); }}>
-                            Design Your Assignment
+                            Create Your Assignment
                         </a>
                         <a href="#resources" onClick={(e) => { e.preventDefault(); scrollToSection('resources'); }}>
                             Resources
@@ -2261,6 +2261,8 @@ function AssignmentDesigner() {
     const [currentStep, setCurrentStep] = useState(1);
     const [showOutput, setShowOutput] = useState(false);
     const [outputFormat, setOutputFormat] = useState('plaintext');
+    const [showValidationError, setShowValidationError] = useState(false);
+    const [missingFields, setMissingFields] = useState([]);
     const outputRef = useRef(null);
 
     // Form state
@@ -2308,28 +2310,54 @@ function AssignmentDesigner() {
         }));
     };
 
-    const validateStep = (step) => {
+    const getMissingFields = (step) => {
+        const missing = [];
         switch (step) {
             case 1:
-                return formData.discipline && formData.question && formData.deliverable && formData.duration;
+                if (!formData.discipline) missing.push('discipline');
+                if (!formData.question) missing.push('question');
+                if (!formData.deliverable) missing.push('deliverable');
+                if (!formData.duration) missing.push('duration');
+                break;
             case 2:
-                return formData.stage1Description && formData.stage1Prohibitions && formData.stage1Why && formData.stage1Deliverable;
+                if (!formData.stage1Description) missing.push('stage1Description');
+                if (!formData.stage1Prohibitions) missing.push('stage1Prohibitions');
+                if (!formData.stage1Why) missing.push('stage1Why');
+                if (!formData.stage1Deliverable) missing.push('stage1Deliverable');
+                break;
             case 3:
                 const hasProductiveUses = formData.stage2ProductiveUses.length > 0 || (formData.stage2UseCustom && formData.stage2CustomProductiveUse.trim() !== '');
-                return formData.stage2Frameworks && formData.stage2Argument && hasProductiveUses && formData.stage2UnproductiveUses && formData.stage2Deliverable;
+                if (!formData.stage2Frameworks) missing.push('stage2Frameworks');
+                if (!formData.stage2Argument) missing.push('stage2Argument');
+                if (!hasProductiveUses) missing.push('stage2ProductiveUses');
+                if (!formData.stage2UnproductiveUses) missing.push('stage2UnproductiveUses');
+                if (!formData.stage2Deliverable) missing.push('stage2Deliverable');
+                break;
             case 4:
                 const hasValidType = formData.stage3Type && (formData.stage3Type !== 'Other' || formData.stage3CustomType.trim() !== '');
-                return hasValidType && formData.stage3Description && formData.stage3AIRole && formData.stage3Deliverable;
-            case 5:
-                return true; // Optional fields
-            default:
-                return false;
+                if (!hasValidType) missing.push('stage3Type');
+                if (!formData.stage3Description) missing.push('stage3Description');
+                if (!formData.stage3AIRole) missing.push('stage3AIRole');
+                if (!formData.stage3Deliverable) missing.push('stage3Deliverable');
+                break;
         }
+        return missing;
+    };
+
+    const validateStep = (step) => {
+        return getMissingFields(step).length === 0;
     };
 
     const nextStep = () => {
-        if (validateStep(currentStep)) {
+        const missing = getMissingFields(currentStep);
+        if (missing.length === 0) {
+            setShowValidationError(false);
+            setMissingFields([]);
             setCurrentStep(prev => Math.min(prev + 1, 5));
+        } else {
+            setShowValidationError(true);
+            setMissingFields(missing);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     };
 
@@ -2681,20 +2709,12 @@ function AssignmentDesigner() {
                     Create your own 3-stage assignment with clearly defined AI permissions for each phase.
                     Define your assignment structure and generate student-facing instructions in your preferred format.
                 </p>
+                <p>
+                    This tool walks you through 5 steps. Each step builds on the last. You'll need about 15-20 minutes to complete.
+                </p>
                 <p style={{fontSize: '0.9rem', color: 'var(--wl-gray)', fontStyle: 'italic', marginTop: '-0.5rem'}}>
                     Fields marked with * are required.
                 </p>
-
-                <div style={{
-                    background: 'var(--wl-highlight)',
-                    border: '2px solid var(--wl-primary)',
-                    borderRadius: '8px',
-                    padding: '1.25rem',
-                    margin: '1.5rem 0',
-                    fontSize: '0.95rem'
-                }}>
-                    <strong style={{color: 'var(--wl-primary)', fontSize: '1.05rem'}}>✨ Quick Start:</strong> This tool walks you through 5 steps. Each step builds on the last. You'll need about 15-20 minutes to complete.
-                </div>
 
                 {/* Progress Indicator */}
                 <div className="progress-indicator">
@@ -2712,6 +2732,23 @@ function AssignmentDesigner() {
                     ))}
                 </div>
 
+                {/* Validation Error Banner */}
+                {showValidationError && (
+                    <div style={{
+                        background: '#FEE2E2',
+                        border: '2px solid #DC2626',
+                        borderRadius: '8px',
+                        padding: '1rem',
+                        marginTop: '1.5rem',
+                        color: '#991B1B'
+                    }}>
+                        <strong>⚠️ Please complete all required fields</strong>
+                        <p style={{marginTop: '0.5rem', fontSize: '0.9rem'}}>
+                            All fields marked with * must be filled out before proceeding to the next step.
+                        </p>
+                    </div>
+                )}
+
                 {/* Step Content */}
                 <div className="form-section">
                     {currentStep === 1 && (
@@ -2726,6 +2763,7 @@ function AssignmentDesigner() {
                                 <input
                                     id="discipline"
                                     type="text"
+                                    className={missingFields.includes('discipline') ? 'validation-error' : ''}
                                     value={formData.discipline}
                                     onChange={(e) => updateField('discipline', e.target.value)}
                                     placeholder="e.g., Biology 201: Ecology, English 150: Composition"
@@ -2737,6 +2775,7 @@ function AssignmentDesigner() {
                                 <label htmlFor="question">What's the central question, problem, or creative challenge? *</label>
                                 <textarea
                                     id="question"
+                                    className={missingFields.includes('question') ? 'validation-error' : ''}
                                     value={formData.question}
                                     onChange={(e) => updateField('question', e.target.value)}
                                     placeholder="e.g., How do invasive species affect local ecosystems?"
@@ -2749,6 +2788,7 @@ function AssignmentDesigner() {
                                 <input
                                     id="deliverable"
                                     type="text"
+                                    className={missingFields.includes('deliverable') ? 'validation-error' : ''}
                                     value={formData.deliverable}
                                     onChange={(e) => updateField('deliverable', e.target.value)}
                                     placeholder="e.g., Research paper, case study, creative work"
@@ -2759,6 +2799,7 @@ function AssignmentDesigner() {
                                 <label htmlFor="duration">How many weeks do students have? *</label>
                                 <select
                                     id="duration"
+                                    className={missingFields.includes('duration') ? 'validation-error' : ''}
                                     value={formData.duration}
                                     onChange={(e) => updateField('duration', e.target.value)}
                                 >
@@ -2784,17 +2825,18 @@ function AssignmentDesigner() {
                                 <label htmlFor="stage1Description">What will students do in Stage 1? Be specific about the concrete actions they'll take. *</label>
                                 <textarea
                                     id="stage1Description"
+                                    className={missingFields.includes('stage1Description') ? 'validation-error' : ''}
                                     value={formData.stage1Description}
                                     onChange={(e) => updateField('stage1Description', e.target.value)}
                                     placeholder="e.g., Students will conduct 4-6 observation sessions at a local ecosystem site..."
                                 />
-                                <div className="help-text">Aim for 100-150 words</div>
                             </div>
 
                             <div className="form-group">
                                 <label htmlFor="stage1Prohibitions">What must come from the student's own experience? *</label>
                                 <textarea
                                     id="stage1Prohibitions"
+                                    className={missingFields.includes('stage1Prohibitions') ? 'validation-error' : ''}
                                     value={formData.stage1Prohibitions}
                                     onChange={(e) => updateField('stage1Prohibitions', e.target.value)}
                                     placeholder="e.g., All field observations must be directly witnessed. AI cannot reconstruct missing data..."
@@ -2806,11 +2848,12 @@ function AssignmentDesigner() {
                                 <label htmlFor="stage1Why">Why is it important students can't use AI here? *</label>
                                 <textarea
                                     id="stage1Why"
+                                    className={missingFields.includes('stage1Why') ? 'validation-error' : ''}
                                     value={formData.stage1Why}
                                     onChange={(e) => updateField('stage1Why', e.target.value)}
                                     placeholder="e.g., Authentic observation skills require distinguishing between what you saw versus what you assume..."
                                 />
-                                <div className="help-text">This becomes the pedagogical reasoning (Aim for 100-150 words)</div>
+                                <div className="help-text">This becomes the pedagogical reasoning</div>
                             </div>
 
                             <div className="form-group">
@@ -2818,6 +2861,7 @@ function AssignmentDesigner() {
                                 <input
                                     id="stage1Deliverable"
                                     type="text"
+                                    className={missingFields.includes('stage1Deliverable') ? 'validation-error' : ''}
                                     value={formData.stage1Deliverable}
                                     onChange={(e) => updateField('stage1Deliverable', e.target.value)}
                                     placeholder="e.g., Field journal with dated entries and photos (3-4 pages)"
@@ -2837,6 +2881,7 @@ function AssignmentDesigner() {
                                 <label htmlFor="stage2Frameworks">What conceptual tools or frameworks will students use? *</label>
                                 <textarea
                                     id="stage2Frameworks"
+                                    className={missingFields.includes('stage2Frameworks') ? 'validation-error' : ''}
                                     value={formData.stage2Frameworks}
                                     onChange={(e) => updateField('stage2Frameworks', e.target.value)}
                                     placeholder="e.g., Students will apply ecological concepts like succession, trophic cascades..."
@@ -2848,16 +2893,16 @@ function AssignmentDesigner() {
                                 <label htmlFor="stage2Argument">What kind of argument or interpretation are students building? *</label>
                                 <textarea
                                     id="stage2Argument"
+                                    className={missingFields.includes('stage2Argument') ? 'validation-error' : ''}
                                     value={formData.stage2Argument}
                                     onChange={(e) => updateField('stage2Argument', e.target.value)}
                                     placeholder="e.g., Students must explain WHY the ecosystem behaves as it does..."
                                 />
-                                <div className="help-text">Aim for 100-150 words</div>
                             </div>
 
                             <div className="form-group">
                                 <label>How can AI help students strengthen their analysis? *</label>
-                                <div className="checkbox-group">
+                                <div className={'checkbox-group' + (missingFields.includes('stage2ProductiveUses') ? ' validation-error' : '')}>
                                     {productiveUseOptions.map((use, index) => (
                                         <div key={index} className="checkbox-item">
                                             <input
@@ -2901,6 +2946,7 @@ function AssignmentDesigner() {
                                 <label htmlFor="stage2UnproductiveUses">What should students NOT use AI for? *</label>
                                 <textarea
                                     id="stage2UnproductiveUses"
+                                    className={missingFields.includes('stage2UnproductiveUses') ? 'validation-error' : ''}
                                     value={formData.stage2UnproductiveUses}
                                     onChange={(e) => updateField('stage2UnproductiveUses', e.target.value)}
                                     placeholder="e.g., Generating the analysis from their Stage 1 work, selecting which concepts apply..."
@@ -2913,6 +2959,7 @@ function AssignmentDesigner() {
                                 <input
                                     id="stage2Deliverable"
                                     type="text"
+                                    className={missingFields.includes('stage2Deliverable') ? 'validation-error' : ''}
                                     value={formData.stage2Deliverable}
                                     onChange={(e) => updateField('stage2Deliverable', e.target.value)}
                                     placeholder="e.g., 3-4 pages of analytical writing"
@@ -2932,6 +2979,7 @@ function AssignmentDesigner() {
                                 <label htmlFor="stage3Type">What type of application or extension? *</label>
                                 <select
                                     id="stage3Type"
+                                    className={missingFields.includes('stage3Type') ? 'validation-error' : ''}
                                     value={formData.stage3Type}
                                     onChange={(e) => updateField('stage3Type', e.target.value)}
                                 >
@@ -2951,6 +2999,7 @@ function AssignmentDesigner() {
                                     <input
                                         id="stage3CustomType"
                                         type="text"
+                                        className={missingFields.includes('stage3Type') ? 'validation-error' : ''}
                                         value={formData.stage3CustomType}
                                         onChange={(e) => updateField('stage3CustomType', e.target.value)}
                                         placeholder="e.g., Comparative analysis across cases..."
@@ -2962,16 +3011,16 @@ function AssignmentDesigner() {
                                 <label htmlFor="stage3Description">Describe what students will do in Stage 3 *</label>
                                 <textarea
                                     id="stage3Description"
+                                    className={missingFields.includes('stage3Description') ? 'validation-error' : ''}
                                     value={formData.stage3Description}
                                     onChange={(e) => updateField('stage3Description', e.target.value)}
                                     placeholder="e.g., Students propose evidence-based interventions for enhancing ecosystem health..."
                                 />
-                                <div className="help-text">Aim for 100-150 words</div>
                             </div>
 
                             <div className="form-group">
                                 <label>How will AI function in this stage? *</label>
-                                <div className="radio-group">
+                                <div className={'radio-group' + (missingFields.includes('stage3AIRole') ? ' validation-error' : '')}>
                                     <div className="radio-item">
                                         <input
                                             type="radio"
@@ -3013,6 +3062,7 @@ function AssignmentDesigner() {
                                 <input
                                     id="stage3Deliverable"
                                     type="text"
+                                    className={missingFields.includes('stage3Deliverable') ? 'validation-error' : ''}
                                     value={formData.stage3Deliverable}
                                     onChange={(e) => updateField('stage3Deliverable', e.target.value)}
                                     placeholder="e.g., 1-2 pages of management recommendations"
