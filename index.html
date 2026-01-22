@@ -2354,15 +2354,17 @@ function AssignmentDesigner() {
             setShowValidationError(false);
             setMissingFields([]);
             setCurrentStep(prev => Math.min(prev + 1, 5));
+            document.getElementById('designer')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
         } else {
             setShowValidationError(true);
             setMissingFields(missing);
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            document.getElementById('designer')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
     };
 
     const prevStep = () => {
         setCurrentStep(prev => Math.max(prev - 1, 1));
+        document.getElementById('designer')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     };
 
     const handleGenerate = () => {
@@ -2841,7 +2843,7 @@ function AssignmentDesigner() {
                                     onChange={(e) => updateField('stage1Prohibitions', e.target.value)}
                                     placeholder="e.g., All field observations must be directly witnessed. AI cannot reconstruct missing data..."
                                 />
-                                <div className="help-text">Be specific about what AI might tempt students to do, and why those uses would undermine learning (Aim for 75-100 words)</div>
+                                <div className="help-text">Be specific about what AI might tempt students to do, and why those uses would undermine learning</div>
                             </div>
 
                             <div className="form-group">
@@ -2886,7 +2888,6 @@ function AssignmentDesigner() {
                                     onChange={(e) => updateField('stage2Frameworks', e.target.value)}
                                     placeholder="e.g., Students will apply ecological concepts like succession, trophic cascades..."
                                 />
-                                <div className="help-text">Aim for 75-100 words</div>
                             </div>
 
                             <div className="form-group">
@@ -2951,7 +2952,6 @@ function AssignmentDesigner() {
                                     onChange={(e) => updateField('stage2UnproductiveUses', e.target.value)}
                                     placeholder="e.g., Generating the analysis from their Stage 1 work, selecting which concepts apply..."
                                 />
-                                <div className="help-text">Aim for 75-100 words</div>
                             </div>
 
                             <div className="form-group">
@@ -3180,7 +3180,7 @@ function AssignmentDesigner() {
                         </div>
                         <div>
                             {currentStep < 5 ? (
-                                <button onClick={nextStep} disabled={!validateStep(currentStep)}>
+                                <button onClick={nextStep}>
                                     Next →
                                 </button>
                             ) : (

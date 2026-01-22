@@ -1336,17 +1336,33 @@ textarea.error {
    ========================================================================= */
 
 @media print {
-    /* Hide navigation, buttons, and non-essential UI */
+    /* Hide everything except the output section */
+    body > *:not(#root),
+    header,
+    footer,
+    .hero,
     nav,
     .utility-buttons,
     .output-actions,
     .output-tabs,
     .progress-indicator,
     .form-navigation,
+    .form-section,
+    .form-intro,
+    .form-group,
     button,
     input,
-    .no-print {
+    textarea,
+    select,
+    .no-print,
+    section:not(#designer),
+    #designer > .container > *:not(.output-section) {
         display: none !important;
+    }
+
+    /* Show only the output section */
+    .output-section {
+        display: block !important;
     }
 
     /* Ensure body and container print cleanly */
