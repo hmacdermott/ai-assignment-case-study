@@ -123,25 +123,25 @@ If you ever wonder why a specific AI boundary exists, ask me. I can explain the 
 
     assessment: `### Stage 1: Authentic Primary Work
 
-**Excellent (A range)** - Work demonstrates direct, unmediated engagement with source material. Includes specific, concrete details that could only come from personal observation/experience. Shows evidence of authentic noticing—including surprising, confusing, or unexpected elements.
+**Excellent** - Work demonstrates direct, unmediated engagement with source material. Includes specific, concrete details that could only come from personal observation/experience. Shows evidence of authentic noticing—including surprising, confusing, or unexpected elements.
 
-**Proficient (B range)** - Work shows genuine engagement with source material. Includes specific details, though may occasionally slip into generalizations. Mostly captures authentic observation with minimal AI-enhanced smoothing.
+**Proficient** - Work shows genuine engagement with source material. Includes specific details, though may occasionally slip into generalizations. Mostly captures authentic observation with minimal AI-enhanced smoothing.
 
-**Developing (C range)** - Work contains mix of authentic observation and generic or theoretical description. Lacks specific concrete details; could describe many similar situations. May be overly polished for Stage 1 documentation.
+**Developing** - Work contains mix of authentic observation and generic or theoretical description. Lacks specific concrete details; could describe many similar situations. May be overly polished for Stage 1 documentation.
 
-**Needs Revision (D/F range)** - Work appears to be AI-generated hypothetical scenario rather than authentic observation. Contains only generic details that could apply to any situation.
+**Needs Revision** - Work appears to be AI-generated hypothetical scenario rather than authentic observation. Contains only generic details that could apply to any situation.
 
 ---
 
 ### Stage 2: Conceptual Interpretation with AI Co-Intelligence
 
-**Excellent (A range)** - Interpretation is clearly grounded in specific Stage 1 observations. Analysis reveals original thinking that connects observations to concepts in novel ways. Shows evidence of using AI to stress-test interpretation. Co-Intelligence Appendix shows sophisticated understanding of where AI helped vs. where human judgment was essential.
+**Excellent** - Interpretation is clearly grounded in specific Stage 1 observations. Analysis reveals original thinking that connects observations to concepts in novel ways. Shows evidence of using AI to stress-test interpretation. Co-Intelligence Appendix shows sophisticated understanding of where AI helped vs. where human judgment was essential.
 
-**Proficient (B range)** - Interpretation connects Stage 1 observations to conceptual frameworks appropriately. Shows some original analytical thinking with AI support. Makes reasonable claims supported by evidence.
+**Proficient** - Interpretation connects Stage 1 observations to conceptual frameworks appropriately. Shows some original analytical thinking with AI support. Makes reasonable claims supported by evidence.
 
-**Developing (C range)** - Interpretation feels somewhat disconnected from specific Stage 1 observations. Analysis may rely heavily on AI-generated insights with insufficient student development.
+**Developing** - Interpretation feels somewhat disconnected from specific Stage 1 observations. Analysis may rely heavily on AI-generated insights with insufficient student development.
 
-**Needs Revision (D/F range)** - Interpretation appears to be AI-generated from Stage 1 content with minimal student contribution. Generic analysis that could apply to any situation, not grounded in student's specific observations.`
+**Needs Revision** - Interpretation appears to be AI-generated from Stage 1 content with minimal student contribution. Generic analysis that could apply to any situation, not grounded in student's specific observations.`
 };
 
 // ============================================================================
@@ -1536,10 +1536,13 @@ function AssignmentDesigner() {
         stage2Frameworks: '',
         stage2Argument: '',
         stage2ProductiveUses: [],
+        stage2UseCustom: false,
+        stage2CustomProductiveUse: '',
         stage2UnproductiveUses: '',
         stage2Deliverable: '',
 
         stage3Type: '',
+        stage3CustomType: '',
         stage3Description: '',
         stage3AIRole: '',
         stage3Deliverable: '',
@@ -1570,9 +1573,11 @@ function AssignmentDesigner() {
             case 2:
                 return formData.stage1Description && formData.stage1Prohibitions && formData.stage1Why && formData.stage1Deliverable;
             case 3:
-                return formData.stage2Frameworks && formData.stage2Argument && formData.stage2ProductiveUses.length > 0 && formData.stage2UnproductiveUses && formData.stage2Deliverable;
+                const hasProductiveUses = formData.stage2ProductiveUses.length > 0 || (formData.stage2UseCustom && formData.stage2CustomProductiveUse.trim() !== '');
+                return formData.stage2Frameworks && formData.stage2Argument && hasProductiveUses && formData.stage2UnproductiveUses && formData.stage2Deliverable;
             case 4:
-                return formData.stage3Type && formData.stage3Description && formData.stage3AIRole && formData.stage3Deliverable;
+                const hasValidType = formData.stage3Type && (formData.stage3Type !== 'Other' || formData.stage3CustomType.trim() !== '');
+                return hasValidType && formData.stage3Description && formData.stage3AIRole && formData.stage3Deliverable;
             case 5:
                 return true; // Optional fields
             default:
@@ -1623,12 +1628,16 @@ function AssignmentDesigner() {
         formData.stage2ProductiveUses.forEach(use => {
             output += `  - ${use}\n`;
         });
+        if (formData.stage2UseCustom && formData.stage2CustomProductiveUse) {
+            output += `  - ${formData.stage2CustomProductiveUse}\n`;
+        }
         output += `\nUnproductive AI Uses (DO NOT do these):\n${formData.stage2UnproductiveUses}\n\n`;
         output += `Deliverable: ${formData.stage2Deliverable}\n\n`;
 
         output += `${'='.repeat(60)}\n\n`;
         output += `STAGE 3: APPLICATION & EXTENSION\n${'-'.repeat(60)}\n\n`;
-        output += `Type: ${formData.stage3Type}\n\n`;
+        const stage3TypeDisplay = formData.stage3Type === 'Other' && formData.stage3CustomType ? formData.stage3CustomType : formData.stage3Type;
+        output += `Type: ${stage3TypeDisplay}\n\n`;
         output += `Description:\n${formData.stage3Description}\n\n`;
         output += `AI Role: ${formData.stage3AIRole}\n\n`;
         output += `Deliverable: ${formData.stage3Deliverable}\n\n`;
@@ -1670,12 +1679,16 @@ function AssignmentDesigner() {
         formData.stage2ProductiveUses.forEach(use => {
             output += `- ${use}\n`;
         });
+        if (formData.stage2UseCustom && formData.stage2CustomProductiveUse) {
+            output += `- ${formData.stage2CustomProductiveUse}\n`;
+        }
         output += `\n### Unproductive AI Uses (DO NOT do these)\n\n${formData.stage2UnproductiveUses}\n\n`;
         output += `**Deliverable:** ${formData.stage2Deliverable}\n\n`;
         output += `---\n\n`;
 
         output += `## Stage 3: Application & Extension\n\n`;
-        output += `**Type:** ${formData.stage3Type}\n\n`;
+        const stage3TypeDisplayMd = formData.stage3Type === 'Other' && formData.stage3CustomType ? formData.stage3CustomType : formData.stage3Type;
+        output += `**Type:** ${stage3TypeDisplayMd}\n\n`;
         output += `### Description\n\n${formData.stage3Description}\n\n`;
         output += `### AI Role\n\n${formData.stage3AIRole}\n\n`;
         output += `**Deliverable:** ${formData.stage3Deliverable}\n\n`;
@@ -1746,6 +1759,9 @@ function AssignmentDesigner() {
         formData.stage2ProductiveUses.forEach(use => {
             output += `            <li>${use}</li>\n`;
         });
+        if (formData.stage2UseCustom && formData.stage2CustomProductiveUse) {
+            output += `            <li>${formData.stage2CustomProductiveUse}</li>\n`;
+        }
         output += `        </ul>\n\n`;
         output += `        <h3>Unproductive AI Uses (DO NOT do these)</h3>\n`;
         output += `        <p>${formData.stage2UnproductiveUses.replace(/\n/g, '</p><p>')}</p>\n\n`;
@@ -1755,7 +1771,8 @@ function AssignmentDesigner() {
         output += `    <div class="stage">\n`;
         output += `        <span class="badge">🛠️ Stage 3</span>\n`;
         output += `        <h2>Application & Extension</h2>\n\n`;
-        output += `        <p><strong>Type:</strong> ${formData.stage3Type}</p>\n\n`;
+        const stage3TypeDisplayHtml = formData.stage3Type === 'Other' && formData.stage3CustomType ? formData.stage3CustomType : formData.stage3Type;
+        output += `        <p><strong>Type:</strong> ${stage3TypeDisplayHtml}</p>\n\n`;
         output += `        <h3>Description</h3>\n`;
         output += `        <p>${formData.stage3Description.replace(/\n/g, '</p><p>')}</p>\n\n`;
         output += `        <h3>AI Role</h3>\n`;
@@ -1998,7 +2015,32 @@ function AssignmentDesigner() {
                                             <label htmlFor={`use-${index}`}>{use}</label>
                                         </div>
                                     ))}
+                                    <div className="checkbox-item">
+                                        <input
+                                            type="checkbox"
+                                            id="use-custom"
+                                            checked={formData.stage2UseCustom}
+                                            onChange={(e) => {
+                                                updateField('stage2UseCustom', e.target.checked);
+                                                if (!e.target.checked) {
+                                                    updateField('stage2CustomProductiveUse', '');
+                                                }
+                                            }}
+                                        />
+                                        <label htmlFor="use-custom">Other (specify below)</label>
+                                    </div>
                                 </div>
+                                {formData.stage2UseCustom && (
+                                    <div className="form-group" style={{marginTop: '1rem'}}>
+                                        <input
+                                            type="text"
+                                            id="customProductiveUse"
+                                            value={formData.stage2CustomProductiveUse}
+                                            onChange={(e) => updateField('stage2CustomProductiveUse', e.target.value)}
+                                            placeholder="Describe how AI can help..."
+                                        />
+                                    </div>
+                                )}
                             </div>
 
                             <div className="form-group">
@@ -2044,8 +2086,22 @@ function AssignmentDesigner() {
                                     <option value="Teaching implications or public communication">Teaching implications or public communication</option>
                                     <option value="Creative extension or iteration">Creative extension or iteration</option>
                                     <option value="Implementation plan or prototype">Implementation plan or prototype</option>
+                                    <option value="Other">Other (specify below)</option>
                                 </select>
                             </div>
+
+                            {formData.stage3Type === 'Other' && (
+                                <div className="form-group">
+                                    <label htmlFor="stage3CustomType">Specify the type of application or extension *</label>
+                                    <input
+                                        id="stage3CustomType"
+                                        type="text"
+                                        value={formData.stage3CustomType}
+                                        onChange={(e) => updateField('stage3CustomType', e.target.value)}
+                                        placeholder="e.g., Comparative analysis across cases..."
+                                    />
+                                </div>
+                            )}
 
                             <div className="form-group">
                                 <label htmlFor="stage3Description">Describe what students will do in Stage 3 *</label>
