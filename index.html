@@ -2196,7 +2196,6 @@ function AssignmentDesigner() {
     const [currentStep, setCurrentStep] = useState(1);
     const [showOutput, setShowOutput] = useState(false);
     const [outputFormat, setOutputFormat] = useState('plaintext');
-    const [userEmail, setUserEmail] = useState('');
     const outputRef = useRef(null);
 
     // Form state
@@ -2503,20 +2502,6 @@ function AssignmentDesigner() {
         a.download = filename;
         a.click();
         URL.revokeObjectURL(url);
-    };
-
-    const handleEmail = () => {
-        if (!userEmail || !userEmail.includes('@')) {
-            alert('Please enter a valid email address');
-            return;
-        }
-
-        const output = getOutput();
-        const subject = encodeURIComponent('Staged AI Assignment');
-        const body = encodeURIComponent(output);
-
-        // Open email client with content
-        window.location.href = `mailto:${userEmail}?subject=${subject}&body=${body}`;
     };
 
     const handlePrint = () => {
@@ -3138,18 +3123,6 @@ function AssignmentDesigner() {
                             <button className="secondary" onClick={handlePrint}>
                                 Print / Save as PDF
                             </button>
-                            <div style={{display: 'flex', gap: '0.5rem', marginTop: '1rem'}}>
-                                <input
-                                    type="email"
-                                    value={userEmail}
-                                    onChange={(e) => setUserEmail(e.target.value)}
-                                    placeholder="Enter your email"
-                                    style={{flex: 1, padding: '0.75rem', border: '1px solid var(--wl-border)', borderRadius: '4px'}}
-                                />
-                                <button onClick={handleEmail}>
-                                    Email to Me
-                                </button>
-                            </div>
                         </div>
                     </div>
                 )}
