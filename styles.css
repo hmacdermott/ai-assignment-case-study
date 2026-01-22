@@ -851,6 +851,7 @@ textarea {
 footer {
     padding: 3rem 0 2rem;
     margin-top: 5rem;
+    background: #ffffff;
 }
 
 .footer-divider {
@@ -1219,6 +1220,10 @@ footer {
 
 [data-theme="dark"]::before {
     display: none;
+}
+
+[data-theme="dark"] footer {
+    background: #1F2937;
 }
 
 [data-theme="dark"] .footer-divider {
