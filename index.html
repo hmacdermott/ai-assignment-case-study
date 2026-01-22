@@ -265,7 +265,7 @@ function Hero() {
     return (
         <section className="hero">
             <div className="container">
-                <h1>Teaching with AI Boundaries: A Framework for Meaningful Learning</h1>
+                <h1>Teaching with AI Boundaries:<br/>A Framework for Meaningful Learning</h1>
                 <p className="subheadline">
                     Discover how to design assignments that protect authentic student thinking while
                     leveraging AI where it genuinely enhances learning.
@@ -291,46 +291,52 @@ function ThreeStagePattern() {
     return (
         <section id="framework">
             <div className="container">
-                <h2>How It Works</h2>
+                <h2>The Three-Stage Framework</h2>
 
                 <div className="pattern-cards">
                     <div className="pattern-card">
-                        <div className="badge">🚫</div>
-                        <h3>Stage 1: Primary Experience</h3>
-                        <p>
-                            Students engage directly with source material through observation, reading, fieldwork,
-                            or making. AI cannot reconstruct, embellish, or generate this foundational work.
-                        </p>
-                        <div className="why-matters">
-                            <strong>Why it matters:</strong> Authentic perception and direct engagement build the
-                            raw material for analysis. Without this, students have nothing genuine to interpret.
+                        <div className="badge-left">🚫</div>
+                        <div className="pattern-card-content">
+                            <h3>Stage 1: Primary Experience</h3>
+                            <p>
+                                Students engage directly with source material through observation, reading, fieldwork,
+                                or making. AI cannot reconstruct, embellish, or generate this foundational work.
+                            </p>
+                            <div className="why-matters">
+                                <strong>Why it matters:</strong> Authentic perception and direct engagement build the
+                                raw material for analysis. Without this, students have nothing genuine to interpret.
+                            </div>
                         </div>
                     </div>
 
                     <div className="pattern-card">
-                        <div className="badge">🤝</div>
-                        <h3>Stage 2: Conceptual Interpretation</h3>
-                        <p>
-                            Students develop analysis using disciplinary frameworks, with AI testing interpretations,
-                            surfacing blind spots, and refining arguments they've already formed.
-                        </p>
-                        <div className="why-matters">
-                            <strong>Why it matters:</strong> AI helps students think more rigorously about their
-                            primary work, but can't replace the interpretive judgment that comes from wrestling
-                            with ideas.
+                        <div className="badge-left">🤝</div>
+                        <div className="pattern-card-content">
+                            <h3>Stage 2: Conceptual Interpretation</h3>
+                            <p>
+                                Students develop analysis using disciplinary frameworks, with AI testing interpretations,
+                                surfacing blind spots, and refining arguments they've already formed.
+                            </p>
+                            <div className="why-matters">
+                                <strong>Why it matters:</strong> AI helps students think more rigorously about their
+                                primary work, but can't replace the interpretive judgment that comes from wrestling
+                                with ideas.
+                            </div>
                         </div>
                     </div>
 
                     <div className="pattern-card">
-                        <div className="badge">🛠️</div>
-                        <h3>Stage 3: Application & Communication</h3>
-                        <p>
-                            Students apply insights to future scenarios or create visual syntheses, using AI as
-                            a design partner or communication tool.
-                        </p>
-                        <div className="why-matters">
-                            <strong>Why it matters:</strong> Students demonstrate understanding through practical
-                            application, with AI supporting implementation rather than replacing insight.
+                        <div className="badge-left">🛠️</div>
+                        <div className="pattern-card-content">
+                            <h3>Stage 3: Application & Communication</h3>
+                            <p>
+                                Students apply insights to future scenarios or create visual syntheses, using AI as
+                                a design partner or communication tool.
+                            </p>
+                            <div className="why-matters">
+                                <strong>Why it matters:</strong> Students demonstrate understanding through practical
+                                application, with AI supporting implementation rather than replacing insight.
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -420,7 +426,8 @@ function BusinessCaseStudy() {
                 </div>
             </div>
 
-            <Accordion title="Grounded Human Observation" badge="Stage 1" defaultOpen={true}>
+            <div className="stages-container">
+            <Accordion title="Observe an Organization in Action" badge="Stage 1" defaultOpen={true}>
                 <div className="accordion-panels">
                     <div className="accordion-panel panel-student">
                         <h4>What Students Learn</h4>
@@ -494,7 +501,9 @@ function BusinessCaseStudy() {
                 </div>
             </Accordion>
 
-            <Accordion title="Organizational Interpretation Using Housel" badge="Stage 2">
+            <div className="stage-arrow">↓</div>
+
+            <Accordion title="Analyze Patterns Using Housel's Framework" badge="Stage 2">
                 <div className="accordion-panels">
                     <div className="accordion-panel panel-student">
                         <h4>What Students Learn</h4>
@@ -578,7 +587,9 @@ function BusinessCaseStudy() {
                 </div>
             </Accordion>
 
-            <Accordion title="Looking Forward Under Uncertainty" badge="Stage 3">
+            <div className="stage-arrow">↓</div>
+
+            <Accordion title="Project Future Scenarios" badge="Stage 3">
                 <div className="accordion-panels">
                     <div className="accordion-panel panel-student">
                         <h4>What Students Learn</h4>
@@ -649,6 +660,7 @@ function BusinessCaseStudy() {
                     </PedagogyPanel>
                 </div>
             </Accordion>
+            </div>
 
             <div className="full-assignment-button">
                 <button className="secondary">View Full Student-Facing Assignment</button>
@@ -682,6 +694,7 @@ function LiteratureCaseStudy() {
                 </div>
             </div>
 
+            <div className="stages-container">
             <Accordion title="Documented Reading Experience" badge="Stage 1" defaultOpen={true}>
                 <div className="accordion-panels">
                     <div className="accordion-panel panel-student">
@@ -737,6 +750,8 @@ function LiteratureCaseStudy() {
                     </PedagogyPanel>
                 </div>
             </Accordion>
+
+            <div className="stage-arrow">↓</div>
 
             <Accordion title="Theoretical Interpretation" badge="Stage 2">
                 <div className="accordion-panels">
@@ -801,6 +816,8 @@ function LiteratureCaseStudy() {
                 </div>
             </Accordion>
 
+            <div className="stage-arrow">↓</div>
+
             <Accordion title="Contemporary Resonance" badge="Stage 3">
                 <div className="accordion-panels">
                     <div className="accordion-panel panel-student">
@@ -860,6 +877,7 @@ function LiteratureCaseStudy() {
                     </PedagogyPanel>
                 </div>
             </Accordion>
+            </div>
 
             <div className="full-assignment-button">
                 <button className="secondary">View Full Student-Facing Assignment</button>
@@ -893,6 +911,7 @@ function EnvironmentalScienceCaseStudy() {
                 </div>
             </div>
 
+            <div className="stages-container">
             <Accordion title="Field Documentation and Data Collection" badge="Stage 1" defaultOpen={true}>
                 <div className="accordion-panels">
                     <div className="accordion-panel panel-student">
@@ -960,6 +979,8 @@ function EnvironmentalScienceCaseStudy() {
                 </div>
             </Accordion>
 
+            <div className="stage-arrow">↓</div>
+
             <Accordion title="Ecological Analysis and Interpretation" badge="Stage 2">
                 <div className="accordion-panels">
                     <div className="accordion-panel panel-student">
@@ -1022,6 +1043,8 @@ function EnvironmentalScienceCaseStudy() {
                 </div>
             </Accordion>
 
+            <div className="stage-arrow">↓</div>
+
             <Accordion title="Management Recommendations" badge="Stage 3">
                 <div className="accordion-panels">
                     <div className="accordion-panel panel-student">
@@ -1074,6 +1097,7 @@ function EnvironmentalScienceCaseStudy() {
                     </PedagogyPanel>
                 </div>
             </Accordion>
+            </div>
 
             <div className="full-assignment-button">
                 <button className="secondary">View Full Student-Facing Assignment</button>
@@ -1107,6 +1131,7 @@ function StudioArtCaseStudy() {
                 </div>
             </div>
 
+            <div className="stages-container">
             <Accordion title="Studio Practice and Process Documentation" badge="Stage 1" defaultOpen={true}>
                 <div className="accordion-panels">
                     <div className="accordion-panel panel-student">
@@ -1179,6 +1204,8 @@ function StudioArtCaseStudy() {
                 </div>
             </Accordion>
 
+            <div className="stage-arrow">↓</div>
+
             <Accordion title="Critical Contextualization Using Art Theory" badge="Stage 2">
                 <div className="accordion-panels">
                     <div className="accordion-panel panel-student">
@@ -1245,6 +1272,8 @@ function StudioArtCaseStudy() {
                 </div>
             </Accordion>
 
+            <div className="stage-arrow">↓</div>
+
             <Accordion title="Artist Statement and Public Communication" badge="Stage 3">
                 <div className="accordion-panels">
                     <div className="accordion-panel panel-student">
@@ -1305,6 +1334,7 @@ function StudioArtCaseStudy() {
                     </PedagogyPanel>
                 </div>
             </Accordion>
+            </div>
 
             <div className="full-assignment-button">
                 <button className="secondary">View Full Student-Facing Assignment</button>
@@ -1343,6 +1373,7 @@ function PsychologyCaseStudy() {
                 </div>
             </div>
 
+            <div className="stages-container">
             <Accordion title="Behavioral Observation" badge="Stage 1" defaultOpen={true}>
                 <div className="accordion-panels">
                     <div className="accordion-panel panel-student">
@@ -1411,6 +1442,8 @@ function PsychologyCaseStudy() {
                     </PedagogyPanel>
                 </div>
             </Accordion>
+
+            <div className="stage-arrow">↓</div>
 
             <Accordion title="Theoretical Analysis" badge="Stage 2">
                 <div className="accordion-panels">
@@ -1488,6 +1521,8 @@ function PsychologyCaseStudy() {
                 </div>
             </Accordion>
 
+            <div className="stage-arrow">↓</div>
+
             <Accordion title="Research Design or Intervention" badge="Stage 3">
                 <div className="accordion-panels">
                     <div className="accordion-panel panel-student">
@@ -1545,6 +1580,11 @@ function PsychologyCaseStudy() {
                     </PedagogyPanel>
                 </div>
             </Accordion>
+            </div>
+
+            <div className="full-assignment-button">
+                <button className="secondary">View Full Student-Facing Assignment</button>
+            </div>
         </div>
     );
 }
@@ -1574,6 +1614,7 @@ function EconomicsCaseStudy() {
                 </div>
             </div>
 
+            <div className="stages-container">
             <Accordion title="Data Collection and Documentation" badge="Stage 1" defaultOpen={true}>
                 <div className="accordion-panels">
                     <div className="accordion-panel panel-student">
@@ -1640,6 +1681,8 @@ function EconomicsCaseStudy() {
                     </PedagogyPanel>
                 </div>
             </Accordion>
+
+            <div className="stage-arrow">↓</div>
 
             <Accordion title="Economic Analysis and Modeling" badge="Stage 2">
                 <div className="accordion-panels">
@@ -1717,6 +1760,8 @@ function EconomicsCaseStudy() {
                 </div>
             </Accordion>
 
+            <div className="stage-arrow">↓</div>
+
             <Accordion title="Policy Recommendations" badge="Stage 3">
                 <div className="accordion-panels">
                     <div className="accordion-panel panel-student">
@@ -1773,6 +1818,11 @@ function EconomicsCaseStudy() {
                     </PedagogyPanel>
                 </div>
             </Accordion>
+            </div>
+
+            <div className="full-assignment-button">
+                <button className="secondary">View Full Student-Facing Assignment</button>
+            </div>
         </div>
     );
 }
@@ -1802,6 +1852,7 @@ function ChemistryCaseStudy() {
                 </div>
             </div>
 
+            <div className="stages-container">
             <Accordion title="Laboratory Work and Data Collection" badge="Stage 1" defaultOpen={true}>
                 <div className="accordion-panels">
                     <div className="accordion-panel panel-student">
@@ -1870,6 +1921,8 @@ function ChemistryCaseStudy() {
                     </PedagogyPanel>
                 </div>
             </Accordion>
+
+            <div className="stage-arrow">↓</div>
 
             <Accordion title="Chemical Analysis and Interpretation" badge="Stage 2">
                 <div className="accordion-panels">
@@ -1945,6 +1998,8 @@ function ChemistryCaseStudy() {
                 </div>
             </Accordion>
 
+            <div className="stage-arrow">↓</div>
+
             <Accordion title="Application or Experimental Design" badge="Stage 3">
                 <div className="accordion-panels">
                     <div className="accordion-panel panel-student">
@@ -2002,6 +2057,11 @@ function ChemistryCaseStudy() {
                     </PedagogyPanel>
                 </div>
             </Accordion>
+            </div>
+
+            <div className="full-assignment-button">
+                <button className="secondary">View Full Student-Facing Assignment</button>
+            </div>
         </div>
     );
 }
@@ -2617,9 +2677,9 @@ function AssignmentDesigner() {
     return (
         <section id="designer">
             <div className="container">
-                <h2>Build Your Staged Assignment</h2>
+                <h2>Build Your Assignment</h2>
                 <p>
-                    Create your own staged assignment with clearly defined AI permissions for each phase.
+                    Create your own 3-stage assignment with clearly defined AI permissions for each phase.
                     Define your assignment structure and generate student-facing instructions in your preferred format.
                 </p>
                 <p style={{fontSize: '0.9rem', color: 'var(--wl-gray)', fontStyle: 'italic', marginTop: '-0.5rem'}}>
