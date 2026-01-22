@@ -229,7 +229,9 @@ function Header() {
             <div className="container">
                 <div className="header-content">
                     <div className="logo">
-                        Harte Center for Teaching and Learning
+                        <a href="https://www.wlu.edu/harte-center" style={{color: 'white', textDecoration: 'none'}}>
+                            Harte Center for Teaching and Learning
+                        </a>
                     </div>
                     <nav>
                         <a href="#framework" onClick={(e) => { e.preventDefault(); scrollToSection('framework'); }}>
@@ -2199,7 +2201,7 @@ function Footer() {
                         />
                     </a>
                     <p className="footer-copyright">
-                        © 2026 Harte Center for Teaching and Learning, Washington and Lee University. All rights reserved.
+                        © 2026 <a href="https://www.wlu.edu/harte-center" target="_blank" rel="noopener noreferrer">Harte Center for Teaching and Learning</a>, Washington and Lee University. All rights reserved.
                     </p>
                     <p className="footer-credits">
                         Co-Created with Claude, Gemini, and ChatGPT | Last Updated: {getCurrentDate()}
