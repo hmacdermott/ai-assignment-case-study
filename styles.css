@@ -24,12 +24,12 @@
     --wl-navy: #4A90E2;
     --wl-navy-dark: #357ABD;
     --wl-gray: #9CA3AF;
-    --wl-light-gray: #1F2937;
-    --wl-border: #374151;
+    --wl-light-gray: #2A2A2A;
+    --wl-border: #3A3A3A;
     --wl-text: #E5E7EB;
     --wl-text-light: #D1D5DB;
-    --bg-primary: #111827;
-    --bg-secondary: #1F2937;
+    --bg-primary: #0A0A0A;
+    --bg-secondary: #1A1A1A;
 }
 
 [data-theme="dark"] body {
