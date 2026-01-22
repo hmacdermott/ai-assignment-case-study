@@ -1490,18 +1490,32 @@ function ResourceLibrary() {
 // ============================================================================
 
 function Footer() {
+    const handleCopyDisclaimer = () => {
+        const disclaimerText = "Human-conceptualized resource combining human-written content and AI-generated material under human direction, editing, and review.";
+        navigator.clipboard.writeText(disclaimerText).then(() => {
+            alert('Disclaimer copied to clipboard!');
+        }).catch(err => {
+            console.error('Failed to copy:', err);
+        });
+    };
+
     return (
         <footer>
             <div className="container">
+                <hr className="footer-divider" />
                 <div className="footer-content">
-                    <div className="footer-text">
-                        © 2025 Washington and Lee University Teaching and Learning Center
-                    </div>
-                    <div className="footer-links">
-                        <a href="#about">About This Project</a>
-                        <a href="#privacy">Privacy</a>
-                        <a href="#accessibility">Accessibility</a>
-                    </div>
+                    <p className="footer-copyright">
+                        © 2026 Washington and Lee University. All rights reserved.
+                    </p>
+                    <p className="footer-credits">
+                        Co-Created with Claude, Gemini, and ChatGPT | Last Updated: January 21, 2026
+                    </p>
+                    <p className="footer-disclaimer">
+                        Human-conceptualized resource combining human-written content and AI-generated material under human direction, editing, and review.
+                    </p>
+                    <button className="footer-copy-btn" onClick={handleCopyDisclaimer} aria-label="Copy disclaimer text">
+                        Copy
+                    </button>
                 </div>
             </div>
         </footer>
