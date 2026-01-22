@@ -37,7 +37,25 @@ body {
     line-height: 1.6;
     color: var(--wl-text);
     background: var(--bg-primary);
+    background-image: url('background-pattern.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
     transition: background-color 0.3s ease, color 0.3s ease;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.85);
+    z-index: -1;
+    pointer-events: none;
 }
 
 /* Typography */
@@ -1139,6 +1157,10 @@ footer {
 [data-theme="dark"] button.secondary,
 [data-theme="dark"] .button.secondary {
     color: var(--wl-navy);
+}
+
+[data-theme="dark"]::before {
+    background: rgba(17, 24, 39, 0.92);
 }
 
 [data-theme="dark"] .footer-divider {
