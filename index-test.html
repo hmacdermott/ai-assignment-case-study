@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teaching with AI Boundaries</title>
+    <link rel="stylesheet" href="styles.css">
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const { useState } = React;
+
+        function Header() {
+            return (
+                <header>
+                    <div className="container">
+                        <div className="header-content">
+                            <div className="logo">
+                                Washington and Lee University Teaching and Learning Center
+                            </div>
+                        </div>
+                    </div>
+                </header>
+            );
+        }
+
+        function Hero() {
+            return (
+                <section className="hero">
+                    <div className="container">
+                        <h1>Teaching with AI Boundaries: A Framework for Meaningful Learning</h1>
+                        <p className="subheadline">
+                            Discover how to design assignments that protect authentic student thinking while
+                            leveraging AI where it genuinely enhances learning.
+                        </p>
+                    </div>
+                </section>
+            );
+        }
+
+        function App() {
+            return (
+                <div>
+                    <Header />
+                    <Hero />
+                    <div style={{padding: '2rem', textAlign: 'center'}}>
+                        <h2>If you see this, React is working!</h2>
+                        <p>The full app is in app.js but may have an issue loading.</p>
+                    </div>
+                </div>
+            );
+        }
+
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+</body>
+</html>
