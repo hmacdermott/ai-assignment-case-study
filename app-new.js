@@ -63,7 +63,7 @@ If you ever wonder why a specific AI boundary exists, ask me. I can explain the 
 
 ### Workaround 2: Asking AI to Analyze Stage 1 Content Before Forming Their Own Interpretation
 
-**What it looks like**: Student completes Stage 1 authentically, then immediately pastes it into ChatGPT and asks: "Analyze this organizational meeting using concepts from *Same As Ever*" or "What themes emerge from this field observation?"
+**What it looks like**: Student completes Stage 1 authentically, then immediately pastes it into ChatGPT and asks: "Analyze this organizational meeting using concepts from *[Same As Ever](https://www.goodreads.com/book/show/125116554-same-as-ever)*" or "What themes emerge from this field observation?"
 
 **Why students do this**: They're overwhelmed by the open-ended nature of interpretation and want guidance on "what it means" before committing to an interpretation.
 
@@ -393,7 +393,7 @@ function BusinessCaseStudy() {
                     <p>
                         An organizational analysis paper examining how a student organization functions under uncertainty,
                         anchored in one personally observed high-stakes moment and interpreted using concepts from Morgan
-                        Housel's <em>Same As Ever</em>.
+                        Housel's <a href="https://www.goodreads.com/book/show/125116554-same-as-ever" target="_blank" rel="noopener noreferrer"><em>Same As Ever</em></a>.
                     </p>
 
                     <h4>Why this assignment matters</h4>
@@ -1496,13 +1496,11 @@ function Footer() {
             <div className="container">
                 <hr className="footer-divider" />
                 <div className="footer-content">
-                    <a href="https://www.wlu.edu/harte-center" target="_blank" rel="noopener noreferrer">
-                        <img
-                            src="harte-center-logo.png"
-                            alt="Harte Center for Teaching and Learning"
-                            className="footer-logo"
-                        />
-                    </a>
+                    <img
+                        src="harte-center-logo.png"
+                        alt="Harte Center for Teaching and Learning"
+                        className="footer-logo"
+                    />
                     <p className="footer-copyright">
                         © 2026 Harte Center for Teaching and Learning, Washington and Lee University. All rights reserved.
                     </p>
@@ -1532,8 +1530,6 @@ function AssignmentDesigner() {
     const [currentStep, setCurrentStep] = useState(1);
     const [showOutput, setShowOutput] = useState(false);
     const [outputFormat, setOutputFormat] = useState('plaintext');
-    const [errors, setErrors] = useState({});
-    const [showErrors, setShowErrors] = useState(false);
     const outputRef = useRef(null);
 
     // Form state
@@ -1570,14 +1566,6 @@ function AssignmentDesigner() {
 
     const updateField = (field, value) => {
         setFormData(prev => ({ ...prev, [field]: value }));
-        // Clear error for this field when user starts typing
-        if (errors[field]) {
-            setErrors(prev => {
-                const newErrors = { ...prev };
-                delete newErrors[field];
-                return newErrors;
-            });
-        }
     };
 
     const toggleProductiveUse = (use) => {
@@ -1587,64 +1575,30 @@ function AssignmentDesigner() {
                 ? prev.stage2ProductiveUses.filter(u => u !== use)
                 : [...prev.stage2ProductiveUses, use]
         }));
-        // Clear error when user makes a selection
-        if (errors.stage2ProductiveUses) {
-            setErrors(prev => {
-                const newErrors = { ...prev };
-                delete newErrors.stage2ProductiveUses;
-                return newErrors;
-            });
-        }
     };
 
     const validateStep = (step) => {
-        const newErrors = {};
-
         switch (step) {
             case 1:
-                if (!formData.discipline) newErrors.discipline = 'Please enter your discipline';
-                if (!formData.question) newErrors.question = 'Please enter the essential question';
-                if (!formData.deliverable) newErrors.deliverable = 'Please enter what students will deliver';
-                if (!formData.duration) newErrors.duration = 'Please select a duration';
-                break;
+                return formData.discipline && formData.question && formData.deliverable && formData.duration;
             case 2:
-                if (!formData.stage1Description) newErrors.stage1Description = 'Please describe what students will do';
-                if (!formData.stage1Prohibitions) newErrors.stage1Prohibitions = 'Please specify what tools/resources are prohibited';
-                if (!formData.stage1Why) newErrors.stage1Why = 'Please explain why this restriction matters';
-                if (!formData.stage1Deliverable) newErrors.stage1Deliverable = 'Please specify what students will deliver';
-                break;
+                return formData.stage1Description && formData.stage1Prohibitions && formData.stage1Why && formData.stage1Deliverable;
             case 3:
-                if (!formData.stage2Frameworks) newErrors.stage2Frameworks = 'Please specify the conceptual frameworks';
-                if (!formData.stage2Argument) newErrors.stage2Argument = 'Please describe the argument type';
                 const hasProductiveUses = formData.stage2ProductiveUses.length > 0 || (formData.stage2UseCustom && formData.stage2CustomProductiveUse.trim() !== '');
-                if (!hasProductiveUses) newErrors.stage2ProductiveUses = 'Please select at least one way AI can help';
-                if (!formData.stage2UnproductiveUses) newErrors.stage2UnproductiveUses = 'Please specify unproductive AI uses';
-                if (!formData.stage2Deliverable) newErrors.stage2Deliverable = 'Please specify what students will deliver';
-                break;
+                return formData.stage2Frameworks && formData.stage2Argument && hasProductiveUses && formData.stage2UnproductiveUses && formData.stage2Deliverable;
             case 4:
-                if (!formData.stage3Type) newErrors.stage3Type = 'Please select an application type';
-                if (formData.stage3Type === 'Other' && !formData.stage3CustomType.trim()) {
-                    newErrors.stage3CustomType = 'Please specify the custom application type';
-                }
-                if (!formData.stage3Description) newErrors.stage3Description = 'Please describe what students will do';
-                if (!formData.stage3AIRole) newErrors.stage3AIRole = 'Please specify how AI will function';
-                if (!formData.stage3Deliverable) newErrors.stage3Deliverable = 'Please specify what students will deliver';
-                break;
+                const hasValidType = formData.stage3Type && (formData.stage3Type !== 'Other' || formData.stage3CustomType.trim() !== '');
+                return hasValidType && formData.stage3Description && formData.stage3AIRole && formData.stage3Deliverable;
             case 5:
-                // Optional fields
-                break;
+                return true; // Optional fields
+            default:
+                return false;
         }
-
-        setErrors(newErrors);
-        return Object.keys(newErrors).length === 0;
     };
 
     const nextStep = () => {
         if (validateStep(currentStep)) {
             setCurrentStep(prev => Math.min(prev + 1, 5));
-            setShowErrors(false);
-        } else {
-            setShowErrors(true);
         }
     };
 
@@ -1935,9 +1889,7 @@ function AssignmentDesigner() {
                                     value={formData.discipline}
                                     onChange={(e) => updateField('discipline', e.target.value)}
                                     placeholder="e.g., Biology 201: Ecology, English 150: Composition"
-                                    className={showErrors && errors.discipline ? 'error' : ''}
                                 />
-                                {showErrors && errors.discipline && <div className="error-message">{errors.discipline}</div>}
                                 <div className="help-text">Include both the discipline and course level</div>
                             </div>
 
@@ -1946,8 +1898,7 @@ function AssignmentDesigner() {
                                 <textarea
                                     id="question"
                                     value={formData.question}
-                                    onChange={(e) =
-                                    className={showErrors && errors.question ? 'error' : ''}> updateField('question', e.target.value)}
+                                    onChange={(e) => updateField('question', e.target.value)}
                                     placeholder="e.g., How do invasive species affect local ecosystems?"
                                 />
                                 <div className="help-text">Capture the core intellectual or creative work of the assignment</div>
@@ -1959,8 +1910,7 @@ function AssignmentDesigner() {
                                     id="deliverable"
                                     type="text"
                                     value={formData.deliverable}
-                                    onChange={(e) =
-                                    className={showErrors && errors.deliverable ? 'error' : ''}> updateField('deliverable', e.target.value)}
+                                    onChange={(e) => updateField('deliverable', e.target.value)}
                                     placeholder="e.g., Research paper, case study, creative work"
                                 />
                             </div>
@@ -1970,8 +1920,7 @@ function AssignmentDesigner() {
                                 <select
                                     id="duration"
                                     value={formData.duration}
-                                    onChange={(e) =
-                                    className={showErrors && errors.duration ? 'error' : ''}> updateField('duration', e.target.value)}
+                                    onChange={(e) => updateField('duration', e.target.value)}
                                 >
                                     <option value="">Select duration...</option>
                                     <option value="1 week">1 week</option>
@@ -1980,7 +1929,6 @@ function AssignmentDesigner() {
                                     <option value="5-6 weeks">5-6 weeks</option>
                                     <option value="Full semester">Full semester</option>
                                 </select>
-                                {showErrors && errors.duration && <div className="error-message">{errors.duration}</div>}
                             </div>
                         </div>
                     )}
@@ -1997,8 +1945,7 @@ function AssignmentDesigner() {
                                 <textarea
                                     id="stage1Description"
                                     value={formData.stage1Description}
-                                    onChange={(e) =
-                                    className={showErrors && errors.stage1Description ? 'error' : ''}> updateField('stage1Description', e.target.value)}
+                                    onChange={(e) => updateField('stage1Description', e.target.value)}
                                     placeholder="e.g., Students will conduct 4-6 observation sessions at a local ecosystem site..."
                                 />
                             </div>
@@ -2008,8 +1955,7 @@ function AssignmentDesigner() {
                                 <textarea
                                     id="stage1Prohibitions"
                                     value={formData.stage1Prohibitions}
-                                    onChange={(e) =
-                                    className={showErrors && errors.stage1Prohibitions ? 'error' : ''}> updateField('stage1Prohibitions', e.target.value)}
+                                    onChange={(e) => updateField('stage1Prohibitions', e.target.value)}
                                     placeholder="e.g., All field observations must be directly witnessed. AI cannot reconstruct missing data..."
                                 />
                                 <div className="help-text">Be specific about what AI might tempt students to do</div>
@@ -2020,8 +1966,7 @@ function AssignmentDesigner() {
                                 <textarea
                                     id="stage1Why"
                                     value={formData.stage1Why}
-                                    onChange={(e) =
-                                    className={showErrors && errors.stage1Why ? 'error' : ''}> updateField('stage1Why', e.target.value)}
+                                    onChange={(e) => updateField('stage1Why', e.target.value)}
                                     placeholder="e.g., Authentic observation skills require distinguishing between what you saw versus what you assume..."
                                 />
                                 <div className="help-text">This becomes the pedagogical reasoning</div>
@@ -2033,8 +1978,7 @@ function AssignmentDesigner() {
                                     id="stage1Deliverable"
                                     type="text"
                                     value={formData.stage1Deliverable}
-                                    onChange={(e) =
-                                    className={showErrors && errors.stage1Deliverable ? 'error' : ''}> updateField('stage1Deliverable', e.target.value)}
+                                    onChange={(e) => updateField('stage1Deliverable', e.target.value)}
                                     placeholder="e.g., Field journal with dated entries and photos (3-4 pages)"
                                 />
                             </div>
@@ -2053,8 +1997,7 @@ function AssignmentDesigner() {
                                 <textarea
                                     id="stage2Frameworks"
                                     value={formData.stage2Frameworks}
-                                    onChange={(e) =
-                                    className={showErrors && errors.stage2Frameworks ? 'error' : ''}> updateField('stage2Frameworks', e.target.value)}
+                                    onChange={(e) => updateField('stage2Frameworks', e.target.value)}
                                     placeholder="e.g., Students will apply ecological concepts like succession, trophic cascades..."
                                 />
                             </div>
@@ -2064,15 +2007,14 @@ function AssignmentDesigner() {
                                 <textarea
                                     id="stage2Argument"
                                     value={formData.stage2Argument}
-                                    onChange={(e) =
-                                    className={showErrors && errors.stage2Argument ? 'error' : ''}> updateField('stage2Argument', e.target.value)}
+                                    onChange={(e) => updateField('stage2Argument', e.target.value)}
                                     placeholder="e.g., Students must explain WHY the ecosystem behaves as it does..."
                                 />
                             </div>
 
                             <div className="form-group">
                                 <label>How can AI help students strengthen their analysis? *</label>
-                                <div className={showErrors && errors.stage2ProductiveUses ? 'checkbox-group error' : 'checkbox-group'}>
+                                <div className="checkbox-group">
                                     {productiveUseOptions.map((use, index) => (
                                         <div key={index} className="checkbox-item">
                                             <input
@@ -2099,7 +2041,6 @@ function AssignmentDesigner() {
                                         <label htmlFor="use-custom">Other (specify below)</label>
                                     </div>
                                 </div>
-                                {showErrors && errors.stage2ProductiveUses && <div className="error-message">{errors.stage2ProductiveUses}</div>}
                                 {formData.stage2UseCustom && (
                                     <div className="form-group" style={{marginTop: '1rem'}}>
                                         <input
@@ -2118,8 +2059,7 @@ function AssignmentDesigner() {
                                 <textarea
                                     id="stage2UnproductiveUses"
                                     value={formData.stage2UnproductiveUses}
-                                    onChange={(e) =
-                                    className={showErrors && errors.stage2UnproductiveUses ? 'error' : ''}> updateField('stage2UnproductiveUses', e.target.value)}
+                                    onChange={(e) => updateField('stage2UnproductiveUses', e.target.value)}
                                     placeholder="e.g., Generating the analysis from their Stage 1 work, selecting which concepts apply..."
                                 />
                             </div>
@@ -2130,8 +2070,7 @@ function AssignmentDesigner() {
                                     id="stage2Deliverable"
                                     type="text"
                                     value={formData.stage2Deliverable}
-                                    onChange={(e) =
-                                    className={showErrors && errors.stage2Deliverable ? 'error' : ''}> updateField('stage2Deliverable', e.target.value)}
+                                    onChange={(e) => updateField('stage2Deliverable', e.target.value)}
                                     placeholder="e.g., 3-4 pages of analytical writing"
                                 />
                             </div>
@@ -2150,8 +2089,7 @@ function AssignmentDesigner() {
                                 <select
                                     id="stage3Type"
                                     value={formData.stage3Type}
-                                    onChange={(e) =
-                                    className={showErrors && errors.stage3Type ? 'error' : ''}> updateField('stage3Type', e.target.value)}
+                                    onChange={(e) => updateField('stage3Type', e.target.value)}
                                 >
                                     <option value="">Select type...</option>
                                     <option value="Future recommendations or design proposals">Future recommendations or design proposals</option>
@@ -2161,7 +2099,6 @@ function AssignmentDesigner() {
                                     <option value="Implementation plan or prototype">Implementation plan or prototype</option>
                                     <option value="Other">Other (specify below)</option>
                                 </select>
-                                {showErrors && errors.stage3Type && <div className="error-message">{errors.stage3Type}</div>}
                             </div>
 
                             {formData.stage3Type === 'Other' && (
@@ -2171,8 +2108,7 @@ function AssignmentDesigner() {
                                         id="stage3CustomType"
                                         type="text"
                                         value={formData.stage3CustomType}
-                                        onChange={(e) =
-                                    className={showErrors && errors.stage3CustomType ? 'error' : ''}> updateField('stage3CustomType', e.target.value)}
+                                        onChange={(e) => updateField('stage3CustomType', e.target.value)}
                                         placeholder="e.g., Comparative analysis across cases..."
                                     />
                                 </div>
@@ -2183,15 +2119,14 @@ function AssignmentDesigner() {
                                 <textarea
                                     id="stage3Description"
                                     value={formData.stage3Description}
-                                    onChange={(e) =
-                                    className={showErrors && errors.stage3Description ? 'error' : ''}> updateField('stage3Description', e.target.value)}
+                                    onChange={(e) => updateField('stage3Description', e.target.value)}
                                     placeholder="e.g., Students propose evidence-based interventions for enhancing ecosystem health..."
                                 />
                             </div>
 
                             <div className="form-group">
                                 <label>How will AI function in this stage? *</label>
-                                <div className={showErrors && errors.stage3AIRole ? 'radio-group error' : 'radio-group'}>
+                                <div className="radio-group">
                                     <div className="radio-item">
                                         <input
                                             type="radio"
@@ -2226,7 +2161,6 @@ function AssignmentDesigner() {
                                         <label htmlFor="ai-choice">Students choose whether to use AI</label>
                                     </div>
                                 </div>
-                                {showErrors && errors.stage3AIRole && <div className="error-message">{errors.stage3AIRole}</div>}
                             </div>
 
                             <div className="form-group">
@@ -2237,9 +2171,7 @@ function AssignmentDesigner() {
                                     value={formData.stage3Deliverable}
                                     onChange={(e) => updateField('stage3Deliverable', e.target.value)}
                                     placeholder="e.g., 1-2 pages of management recommendations"
-                                    className={showErrors && errors.stage3Deliverable ? 'error' : ''}
                                 />
-                                {showErrors && errors.stage3Deliverable && <div className="error-message">{errors.stage3Deliverable}</div>}
                             </div>
                         </div>
                     )}
