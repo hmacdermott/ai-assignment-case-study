@@ -1166,3 +1166,17 @@ footer {
     color: white;
     text-decoration: underline;
 }
+
+/* Footer logo */
+.footer-logo {
+    max-width: 400px;
+    height: auto;
+    margin: 0 auto 1.5rem;
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .footer-logo {
+        max-width: 300px;
+    }
+}

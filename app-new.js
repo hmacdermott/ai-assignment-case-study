@@ -1496,6 +1496,11 @@ function Footer() {
             <div className="container">
                 <hr className="footer-divider" />
                 <div className="footer-content">
+                    <img
+                        src="harte-center-logo.png"
+                        alt="Harte Center for Teaching and Learning"
+                        className="footer-logo"
+                    />
                     <p className="footer-copyright">
                         © 2026 Harte Center for Teaching and Learning, Washington and Lee University. All rights reserved.
                     </p>
