@@ -377,18 +377,11 @@ function BusinessCaseStudy() {
     return (
         <div>
             <div className="assignment-overview">
-                <div className="assignment-meta">
-                    <div className="assignment-meta-item">
-                        <div className="assignment-meta-label">Course</div>
-                        <div className="assignment-meta-value">Managing Uncertainty (Business Administration)</div>
-                    </div>
-                    <div className="assignment-meta-item">
-                        <div className="assignment-meta-label">Level</div>
-                        <div className="assignment-meta-value">Undergraduate, 200-level</div>
-                    </div>
-                </div>
-
                 <div className="overview-section">
+                    <p style={{fontStyle: 'italic', marginBottom: '1.5rem', color: 'var(--wl-gray)'}}>
+                        This is the original assignment developed by Jeff Schatten for his Managing Uncertainty course (Business Administration, undergraduate 200-level).
+                    </p>
+
                     <h4>What students create</h4>
                     <p>
                         An organizational analysis paper examining how a student organization functions under uncertainty,
@@ -654,17 +647,6 @@ function LiteratureCaseStudy() {
     return (
         <div>
             <div className="assignment-overview">
-                <div className="assignment-meta">
-                    <div className="assignment-meta-item">
-                        <div className="assignment-meta-label">Course</div>
-                        <div className="assignment-meta-value">Introduction to Literary Analysis or American Literature Survey</div>
-                    </div>
-                    <div className="assignment-meta-item">
-                        <div className="assignment-meta-label">Level</div>
-                        <div className="assignment-meta-value">Undergraduate, 200-level</div>
-                    </div>
-                </div>
-
                 <div className="overview-section">
                     <h4>What students create</h4>
                     <p>
@@ -880,17 +862,6 @@ function EnvironmentalScienceCaseStudy() {
     return (
         <div>
             <div className="assignment-overview">
-                <div className="assignment-meta">
-                    <div className="assignment-meta-item">
-                        <div className="assignment-meta-label">Course</div>
-                        <div className="assignment-meta-value">Environmental Science or Ecology Field Course</div>
-                    </div>
-                    <div className="assignment-meta-item">
-                        <div className="assignment-meta-label">Level</div>
-                        <div className="assignment-meta-value">Undergraduate, 200-300 level</div>
-                    </div>
-                </div>
-
                 <div className="overview-section">
                     <h4>What students create</h4>
                     <p>
@@ -1109,17 +1080,6 @@ function StudioArtCaseStudy() {
     return (
         <div>
             <div className="assignment-overview">
-                <div className="assignment-meta">
-                    <div className="assignment-meta-item">
-                        <div className="assignment-meta-label">Course</div>
-                        <div className="assignment-meta-value">Studio Art: Drawing, Painting, Printmaking, or 2D Foundations</div>
-                    </div>
-                    <div className="assignment-meta-item">
-                        <div className="assignment-meta-label">Level</div>
-                        <div className="assignment-meta-value">Undergraduate, 200-300 level</div>
-                    </div>
-                </div>
-
                 <div className="overview-section">
                     <h4>What students create</h4>
                     <p>
