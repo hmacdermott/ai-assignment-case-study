@@ -2211,6 +2211,7 @@ function AssignmentDesigner() {
     const [currentStep, setCurrentStep] = useState(1);
     const [showOutput, setShowOutput] = useState(false);
     const [outputFormat, setOutputFormat] = useState('plaintext');
+    const [userEmail, setUserEmail] = useState('');
     const outputRef = useRef(null);
 
     // Form state
@@ -2519,6 +2520,20 @@ function AssignmentDesigner() {
         URL.revokeObjectURL(url);
     };
 
+    const handleEmail = () => {
+        if (!userEmail || !userEmail.includes('@')) {
+            alert('Please enter a valid email address');
+            return;
+        }
+
+        const output = getOutput();
+        const subject = encodeURIComponent('Staged AI Assignment');
+        const body = encodeURIComponent(output);
+
+        // Open email client with content
+        window.location.href = `mailto:${userEmail}?subject=${subject}&body=${body}`;
+    };
+
     const productiveUseOptions = [
         'Stress-testing interpretations by proposing alternative explanations',
         'Surfacing contextual information or knowledge gaps',
@@ -2535,6 +2550,9 @@ function AssignmentDesigner() {
                 <p>
                     Create your own staged assignment with clearly defined AI permissions for each phase.
                     Define your assignment structure and generate student-facing instructions in your preferred format.
+                </p>
+                <p style={{fontSize: '0.9rem', color: 'var(--wl-gray)', fontStyle: 'italic', marginTop: '-0.5rem'}}>
+                    Fields marked with * are required.
                 </p>
 
                 {/* Progress Indicator */}
@@ -3015,6 +3033,18 @@ function AssignmentDesigner() {
                             <button className="secondary" onClick={handleDownload}>
                                 Download File
                             </button>
+                            <div style={{display: 'flex', gap: '0.5rem', marginTop: '1rem'}}>
+                                <input
+                                    type="email"
+                                    value={userEmail}
+                                    onChange={(e) => setUserEmail(e.target.value)}
+                                    placeholder="Enter your email"
+                                    style={{flex: 1, padding: '0.75rem', border: '1px solid var(--wl-border)', borderRadius: '4px'}}
+                                />
+                                <button onClick={handleEmail}>
+                                    Email to Me
+                                </button>
+                            </div>
                         </div>
                     </div>
                 )}
