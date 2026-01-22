@@ -1180,3 +1180,43 @@ footer {
         max-width: 300px;
     }
 }
+
+/* Form validation errors */
+input.error,
+select.error,
+textarea.error {
+    border-color: #DC2626;
+    background-color: rgba(220, 38, 38, 0.05);
+}
+
+.error-message {
+    color: #DC2626;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    display: block;
+}
+
+.checkbox-group.error,
+.radio-group.error {
+    border: 1px solid #DC2626;
+    padding: 1rem;
+    border-radius: 4px;
+    background-color: rgba(220, 38, 38, 0.05);
+}
+
+[data-theme="dark"] input.error,
+[data-theme="dark"] select.error,
+[data-theme="dark"] textarea.error {
+    border-color: #EF4444;
+    background-color: rgba(239, 68, 68, 0.1);
+}
+
+[data-theme="dark"] .error-message {
+    color: #F87171;
+}
+
+[data-theme="dark"] .checkbox-group.error,
+[data-theme="dark"] .radio-group.error {
+    border-color: #EF4444;
+    background-color: rgba(239, 68, 68, 0.1);
+}
