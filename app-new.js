@@ -1485,6 +1485,13 @@ function Footer() {
         });
     };
 
+    // Get current date for Last Updated
+    const getCurrentDate = () => {
+        const date = new Date();
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        return date.toLocaleDateString('en-US', options);
+    };
+
     return (
         <footer>
             <div className="container">
@@ -1494,7 +1501,7 @@ function Footer() {
                         © 2026 Washington and Lee University. All rights reserved.
                     </p>
                     <p className="footer-credits">
-                        Co-Created with Claude, Gemini, and ChatGPT | Last Updated: January 21, 2026
+                        Co-Created with Claude, Gemini, and ChatGPT | Last Updated: {getCurrentDate()}
                     </p>
                     <p className="footer-disclaimer">
                         Human-conceptualized resource combining human-written content and AI-generated material under human direction, editing, and review.
