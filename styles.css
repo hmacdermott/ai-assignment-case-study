@@ -1155,6 +1155,21 @@ footer {
     background: transparent;
 }
 
+/* Dark mode tab fixes */
+[data-theme="dark"] .tab {
+    color: var(--wl-gray);
+}
+
+[data-theme="dark"] .tab.active {
+    color: var(--wl-navy);
+    border-bottom-color: var(--wl-navy);
+    background: transparent;
+}
+
+[data-theme="dark"] .tab:hover {
+    color: var(--wl-navy);
+}
+
 /* Hero link styling */
 .hero a {
     color: rgba(255, 255, 255, 0.95);
