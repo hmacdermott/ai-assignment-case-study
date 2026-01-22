@@ -1324,7 +1324,7 @@ function CaseStudies() {
             <div className="container-wide">
                 <h2>See the Framework in Action</h2>
                 <p>
-                    Explore how faculty across disciplines apply staged AI boundaries to maintain rigor while
+                    Explore how staged AI boundaries could be adapted across disciplines to maintain rigor while
                     embracing generative tools.
                 </p>
 
