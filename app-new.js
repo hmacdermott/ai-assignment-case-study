@@ -3003,7 +3003,7 @@ function AssignmentDesigner() {
                 {/* Output Section */}
                 {showOutput && (
                     <div className="output-section" ref={outputRef}>
-                        <h3>Generated Assignment</h3>
+                        <h3>Your Generated Assignment</h3>
 
                         <div className="output-tabs">
                             <button

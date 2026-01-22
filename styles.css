@@ -21,15 +21,15 @@
 }
 
 [data-theme="dark"] {
-    --wl-navy: #4A90E2;
-    --wl-navy-dark: #357ABD;
+    --wl-navy: #5BA3FF;
+    --wl-navy-dark: #4A90E2;
     --wl-gray: #9CA3AF;
-    --wl-light-gray: #2A2A2A;
-    --wl-border: #3A3A3A;
-    --wl-text: #E5E7EB;
+    --wl-light-gray: #2D2D2D;
+    --wl-border: #4A4A4A;
+    --wl-text: #F3F4F6;
     --wl-text-light: #D1D5DB;
-    --bg-primary: #0A0A0A;
-    --bg-secondary: #1A1A1A;
+    --bg-primary: #1A1A1A;
+    --bg-secondary: #242424;
 }
 
 [data-theme="dark"] body {
@@ -1175,16 +1175,18 @@ footer {
     opacity: 0.9;
 }
 
-[data-theme="dark"] .progress-step {
-    background: var(--bg-secondary);
+[data-theme="dark"] .progress-number {
+    border-color: var(--wl-border);
+    background: transparent;
+    color: var(--wl-text);
 }
 
-[data-theme="dark"] .progress-step.active {
-    background: var(--wl-navy);
+[data-theme="dark"] .progress-label {
+    color: var(--wl-text-light);
 }
 
-[data-theme="dark"] .progress-step.completed {
-    background: var(--wl-navy-dark);
+[data-theme="dark"] .progress-step::after {
+    background: var(--wl-border);
 }
 
 [data-theme="dark"] .checkbox-group,
@@ -1194,7 +1196,7 @@ footer {
 
 /* Dark mode tab fixes */
 [data-theme="dark"] .tab {
-    color: var(--wl-gray);
+    color: var(--wl-text-light);
 }
 
 [data-theme="dark"] .tab.active {
@@ -1271,4 +1273,72 @@ textarea.error {
 [data-theme="dark"] .radio-group.error {
     border-color: #EF4444;
     background-color: rgba(239, 68, 68, 0.1);
+}
+
+/* =========================================================================
+   PRINT STYLES
+   ========================================================================= */
+
+@media print {
+    /* Hide navigation, buttons, and non-essential UI */
+    nav,
+    .utility-buttons,
+    .output-actions,
+    .output-tabs,
+    .progress-indicator,
+    .form-navigation,
+    button,
+    input,
+    .no-print {
+        display: none !important;
+    }
+
+    /* Ensure body and container print cleanly */
+    body {
+        background: white !important;
+        color: black !important;
+        font-size: 11pt;
+        line-height: 1.5;
+    }
+
+    /* Set page margins for letter size */
+    @page {
+        margin: 0.75in;
+        size: letter;
+    }
+
+    /* Ensure output content prints well */
+    .output-content {
+        background: white !important;
+        border: none !important;
+        padding: 0 !important;
+        max-height: none !important;
+        overflow: visible !important;
+    }
+
+    .output-content pre {
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        page-break-inside: avoid;
+        font-size: 10pt;
+    }
+
+    /* Ensure headings and text are readable */
+    h1, h2, h3, h4, h5, h6 {
+        color: black !important;
+        page-break-after: avoid;
+    }
+
+    p, li {
+        color: black !important;
+        orphans: 3;
+        widows: 3;
+    }
+
+    /* Hide background patterns */
+    body::before,
+    .container::before,
+    .pattern-overlay {
+        display: none !important;
+    }
 }
