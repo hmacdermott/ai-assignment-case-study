@@ -331,7 +331,8 @@ button.secondary:hover, .button.secondary:hover {
 }
 
 .tab:hover {
-    color: var(--wl-text);
+    color: var(--wl-navy);
+    background: none;
 }
 
 .tab.active {
@@ -1226,6 +1227,10 @@ footer {
     background: #1F2937;
 }
 
+[data-theme="dark"] .footer-logo {
+    display: none;
+}
+
 [data-theme="dark"] .footer-divider {
     border-color: var(--wl-border);
 }
@@ -1265,7 +1270,8 @@ footer {
 }
 
 [data-theme="dark"] .tab:hover {
-    color: var(--wl-text);
+    color: var(--wl-navy);
+    background: none;
 }
 
 /* Hero link styling */
