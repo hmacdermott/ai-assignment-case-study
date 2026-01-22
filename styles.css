@@ -1064,8 +1064,8 @@ footer {
 [data-theme="dark"] .accordion-header,
 [data-theme="dark"] .form-group,
 [data-theme="dark"] .form-wizard {
-    background: var(--bg-secondary);
-    border-color: var(--wl-border);
+    background: #2A2A2A;
+    border-color: #444444;
 }
 
 [data-theme="dark"] input,
