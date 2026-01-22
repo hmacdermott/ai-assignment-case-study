@@ -1330,6 +1330,706 @@ function StudioArtCaseStudy() {
 // CASE STUDIES SECTION (with tabs)
 // ============================================================================
 
+
+// ============================================================================
+// PSYCHOLOGY CASE STUDY
+// ============================================================================
+
+function PsychologyCaseStudy() {
+    return (
+        <div>
+            <div className="assignment-overview">
+                <div className="overview-section">
+                    <h4>What students create</h4>
+                    <p>
+                        A research proposal examining human behavior through direct observation, interpreted using 
+                        psychological theories, and extended into an intervention design or research methodology.
+                    </p>
+
+                    <h4>Why this assignment matters</h4>
+                    <p>
+                        Students learn to distinguish between what they observe people doing and the psychological 
+                        explanations they construct. By starting with authentic behavioral observation before applying 
+                        theory, they develop the foundational skill of empirical reasoning—seeing what actually happens 
+                        before explaining why.
+                    </p>
+                </div>
+            </div>
+
+            <Accordion title="Behavioral Observation" badge="Stage 1" defaultOpen={true}>
+                <div className="accordion-panels">
+                    <div className="accordion-panel panel-student">
+                        <h4>What Students Learn</h4>
+                        <ul>
+                            <li>How to observe behavior without imposing theoretical interpretation</li>
+                            <li>The difference between description and psychological explanation</li>
+                            <li>How to notice patterns in human behavior systematically</li>
+                        </ul>
+
+                        <h4>AI Permissions: None</h4>
+                        <p>
+                            This stage requires your direct observation of actual human behavior. AI cannot observe 
+                            for you, and psychological research depends on authentic documentation of what people 
+                            actually do, not what theory predicts they should do.
+                        </p>
+
+                        <h4>The Assignment</h4>
+                        <p>
+                            Choose a setting where you can observe human behavior: study habits in the library, 
+                            decision-making in a campus dining hall, group dynamics in a team meeting, social 
+                            interactions in a specific context. Observe for multiple sessions, documenting specific 
+                            behaviors, patterns, contextual factors.
+                        </p>
+                        <p>
+                            Write 500-750 words describing exactly what you observed. Record specific actions, 
+                            sequences, timing, who did what. No psychological interpretation yet—that comes in 
+                            Stage 2. Right now, capture the behavioral data.
+                        </p>
+
+                        <h4>Example Topics</h4>
+                        <ul>
+                            <li>How students actually study versus how they plan to study</li>
+                            <li>Decision-making patterns when choosing food under time pressure</li>
+                            <li>Turn-taking and influence patterns in student organization meetings</li>
+                            <li>Procrastination behaviors and triggers in authentic academic contexts</li>
+                        </ul>
+                    </div>
+
+                    <PedagogyPanel>
+                        <h4>Why no AI here?</h4>
+                        <p>
+                            Psychology is an empirical science built on systematic observation. Students need 
+                            unmediated access to behavioral data before they impose theoretical frameworks. If 
+                            they use AI to "reconstruct" or "enhance" observations, they lose the raw behavioral 
+                            patterns that make good psychological research possible.
+                        </p>
+
+                        <h4>What would break?</h4>
+                        <p>
+                            If students could use AI in this stage, they would unconsciously shift from recording 
+                            what people did to describing what psychological theory says they should have done. 
+                            AI would smooth over the inconsistencies, surprises, and contextual details that make 
+                            observations psychologically interesting.
+                        </p>
+
+                        <h4>What to expect?</h4>
+                        <p>
+                            Students may resist this constraint, wanting to immediately explain what they're seeing. 
+                            However, forcing them to separate observation from interpretation builds the empirical 
+                            discipline central to psychological science—distinguishing data from theory.
+                        </p>
+
+                        <h4>Disciplinary connection</h4>
+                        <p>
+                            In psychology, the ability to observe behavior systematically without theoretical bias 
+                            is foundational to research methods. This stage builds that capacity—learning to see 
+                            what's actually there before explaining it with psychological concepts.
+                        </p>
+                    </PedagogyPanel>
+                </div>
+            </Accordion>
+
+            <Accordion title="Theoretical Analysis" badge="Stage 2">
+                <div className="accordion-panels">
+                    <div className="accordion-panel panel-student">
+                        <h4>What Students Learn</h4>
+                        <ul>
+                            <li>How to connect observations to psychological theory</li>
+                            <li>How to test competing theoretical explanations</li>
+                            <li>How to use AI to strengthen psychological reasoning</li>
+                        </ul>
+
+                        <h4>AI Permissions: Co-Intelligence Partner</h4>
+                        <p>
+                            Now AI becomes a thinking partner. Use it to test your psychological interpretations, 
+                            identify alternative theoretical frameworks, surface research you should consider, 
+                            and challenge your reasoning.
+                        </p>
+
+                        <h4>The Assignment</h4>
+                        <p>
+                            Connect your Stage 1 observations to psychological theory. What cognitive, social, 
+                            developmental, or behavioral principles explain what you observed? Use AI to stress-test 
+                            your interpretation: "What alternative psychological explanations could account for this 
+                            pattern?" "What confounding variables might I be missing?" "What research supports or 
+                            contradicts this interpretation?"
+                        </p>
+
+                        <h4>Productive AI Uses</h4>
+                        <ul>
+                            <li>Testing whether your interpretation accounts for all observed behaviors</li>
+                            <li>Identifying cognitive biases in your own reasoning</li>
+                            <li>Surfacing relevant psychological research and theories</li>
+                            <li>Checking assumptions about causation versus correlation</li>
+                        </ul>
+
+                        <h4>Unproductive AI Uses</h4>
+                        <p>
+                            Don't paste your Stage 1 observations and ask "What psychological theories explain this?" 
+                            You need to form your own interpretation first. AI strengthens your thinking, but cannot 
+                            replace the analytical work of connecting observation to theory.
+                        </p>
+
+                        <h4>What Students Deliver</h4>
+                        <p>
+                            2-3 pages analyzing your observations through psychological theory, demonstrating how AI 
+                            helped refine (not generate) your interpretation. Include a brief appendix: where did AI 
+                            add value, and where did it miss nuances you caught?
+                        </p>
+                    </div>
+
+                    <PedagogyPanel>
+                        <h4>Why AI here?</h4>
+                        <p>
+                            After students have authentic observations, AI helps them think more rigorously about 
+                            psychological explanation. It can surface relevant research, identify alternative theories, 
+                            and challenge weak reasoning—exactly what good psychological training should provide.
+                        </p>
+
+                        <h4>Student outcomes</h4>
+                        <p>
+                            AI can help students see gaps in their psychological reasoning or consider theoretical 
+                            frameworks they hadn't weighted properly. Effective uses include having AI argue for 
+                            alternative explanations, which forces students to either strengthen their interpretation 
+                            or recognize they need better theory.
+                        </p>
+
+                        <h4>Disciplinary connection</h4>
+                        <p>
+                            In psychological research, having your theoretical interpretation challenged is normal—by 
+                            peer reviewers, conflicting data, or alternative frameworks. Learning to use AI as a 
+                            "theoretical skeptic" prepares students for research where interpretations must withstand 
+                            scrutiny.
+                        </p>
+                    </PedagogyPanel>
+                </div>
+            </Accordion>
+
+            <Accordion title="Research Design or Intervention" badge="Stage 3">
+                <div className="accordion-panels">
+                    <div className="accordion-panel panel-student">
+                        <h4>What Students Learn</h4>
+                        <ul>
+                            <li>How to design research that tests psychological hypotheses</li>
+                            <li>How to translate theory into interventions</li>
+                            <li>How to anticipate methodological and ethical challenges</li>
+                        </ul>
+
+                        <h4>AI Permissions: As Tool and Partner</h4>
+                        <p>
+                            Use AI to design research methodology, identify ethical considerations, suggest measurement 
+                            approaches, or develop intervention strategies. AI helps with implementation while you 
+                            maintain ownership of the research question and theoretical foundation.
+                        </p>
+
+                        <h4>The Assignment</h4>
+                        <p>
+                            Based on your interpretation, design either: (1) a research study to test your psychological 
+                            hypothesis, or (2) a behavioral intervention based on your findings. Use AI to refine 
+                            methodology, identify potential confounds, ensure ethical research practices, or suggest 
+                            measurement tools.
+                        </p>
+
+                        <h4>What Students Deliver</h4>
+                        <p>
+                            A research proposal (2-3 pages) including: hypothesis derived from your Stage 2 analysis, 
+                            methodology, anticipated challenges, and ethical considerations. Show how your design follows 
+                            from your observations and theoretical analysis.
+                        </p>
+                    </div>
+
+                    <PedagogyPanel>
+                        <h4>Why AI here?</h4>
+                        <p>
+                            Research design requires considering many methodological details—sampling, measurement, 
+                            confounds, ethics. AI can help students work through these systematically while they 
+                            focus on the core psychological question and theoretical foundation.
+                        </p>
+
+                        <h4>Student outcomes</h4>
+                        <p>
+                            This is where students' psychological analysis becomes actionable research. Strong proposals 
+                            show clear connection from observed behavior → theoretical interpretation → testable hypothesis, 
+                            with AI supporting the methodological rigor.
+                        </p>
+
+                        <h4>Disciplinary connection</h4>
+                        <p>
+                            Psychology requires translating theoretical understanding into empirical research. This stage 
+                            ensures students can move from interpretation to investigation—the core cycle of psychological 
+                            science.
+                        </p>
+                    </PedagogyPanel>
+                </div>
+            </Accordion>
+        </div>
+    );
+}
+
+// ============================================================================
+// ECONOMICS CASE STUDY
+// ============================================================================
+
+function EconomicsCaseStudy() {
+    return (
+        <div>
+            <div className="assignment-overview">
+                <div className="overview-section">
+                    <h4>What students create</h4>
+                    <p>
+                        An economic analysis anchored in real-world data, interpreted through economic models and theory, 
+                        culminating in evidence-based policy recommendations or forecasts.
+                    </p>
+
+                    <h4>Why this assignment matters</h4>
+                    <p>
+                        Students learn to distinguish between economic data they can document and the models they use 
+                        to interpret it. By starting with authentic data collection before applying economic theory, 
+                        they develop the foundational skill of empirical economics—letting data inform theory rather 
+                        than theory dictate data.
+                    </p>
+                </div>
+            </div>
+
+            <Accordion title="Data Collection and Documentation" badge="Stage 1" defaultOpen={true}>
+                <div className="accordion-panels">
+                    <div className="accordion-panel panel-student">
+                        <h4>What Students Learn</h4>
+                        <ul>
+                            <li>How to locate and extract data from primary economic sources</li>
+                            <li>The difference between data and economic interpretation</li>
+                            <li>How to document economic phenomena systematically</li>
+                        </ul>
+
+                        <h4>AI Permissions: None</h4>
+                        <p>
+                            This stage requires you to locate, extract, and document real economic data from primary 
+                            sources. AI cannot gather data for you, and economic analysis depends on your ability to 
+                            work with authentic data sources, not AI-generated summaries.
+                        </p>
+
+                        <h4>The Assignment</h4>
+                        <p>
+                            Choose an economic phenomenon you can track with real data: local employment trends, housing 
+                            prices, inflation patterns, trade flows, wage changes in specific sectors. Use primary sources 
+                            like Bureau of Labor Statistics, Federal Reserve databases, Census data, company financial 
+                            reports.
+                        </p>
+                        <p>
+                            Document your data collection: what variables did you track? Over what period? What patterns 
+                            emerge? Create tables, charts showing the raw data. No economic interpretation yet—that's 
+                            Stage 2. Right now, demonstrate you can work with authentic economic data.
+                        </p>
+
+                        <h4>Example Topics</h4>
+                        <ul>
+                            <li>Local employment changes by sector over the past 2-3 years</li>
+                            <li>Housing price trends in a specific market with demographic data</li>
+                            <li>Trade patterns between specific countries/products</li>
+                            <li>Minimum wage changes and employment data in specific industries</li>
+                        </ul>
+                    </div>
+
+                    <PedagogyPanel>
+                        <h4>Why no AI here?</h4>
+                        <p>
+                            Economists must be able to locate, extract, and work with real economic data. If students 
+                            use AI to "find data for them" or "summarize economic trends," they bypass the essential 
+                            skill of working with primary sources and understanding data provenance.
+                        </p>
+
+                        <h4>What would break?</h4>
+                        <p>
+                            If students could use AI here, they would get AI-generated summaries rather than learning 
+                            to navigate actual economic databases. They would lose the hands-on experience with data 
+                            quality, measurement issues, and source reliability that matters for real economic analysis.
+                        </p>
+
+                        <h4>What to expect?</h4>
+                        <p>
+                            Students may find primary data sources more complex than expected. However, this challenge 
+                            is precisely what builds economic literacy—learning to work with messy, real-world data 
+                            rather than sanitized examples.
+                        </p>
+
+                        <h4>Disciplinary connection</h4>
+                        <p>
+                            In economics, the ability to work with primary data sources is foundational to empirical 
+                            research. This stage builds that capacity—learning to document economic reality before 
+                            imposing theoretical models.
+                        </p>
+                    </PedagogyPanel>
+                </div>
+            </Accordion>
+
+            <Accordion title="Economic Analysis and Modeling" badge="Stage 2">
+                <div className="accordion-panels">
+                    <div className="accordion-panel panel-student">
+                        <h4>What Students Learn</h4>
+                        <ul>
+                            <li>How to apply economic models to real data</li>
+                            <li>How to test competing economic explanations</li>
+                            <li>How to use AI to strengthen economic reasoning</li>
+                        </ul>
+
+                        <h4>AI Permissions: Co-Intelligence Partner</h4>
+                        <p>
+                            Now AI becomes your analytical partner. Use it to test economic logic, check mathematical 
+                            reasoning, identify omitted variables, surface alternative models, and challenge your 
+                            assumptions about causation.
+                        </p>
+
+                        <h4>The Assignment</h4>
+                        <p>
+                            Apply economic theory to explain your Stage 1 data. What economic principles account for 
+                            the patterns you documented? Supply and demand? Market structures? Policy effects? 
+                            Information asymmetries? Use AI to stress-test your analysis: "What alternative economic 
+                            explanations could fit this data?" "What confounding factors might I be missing?" "Does 
+                            my causal reasoning hold up?"
+                        </p>
+
+                        <h4>Productive AI Uses</h4>
+                        <ul>
+                            <li>Checking mathematical reasoning and calculations</li>
+                            <li>Identifying omitted variables or confounding factors</li>
+                            <li>Testing model assumptions against your specific context</li>
+                            <li>Surfacing alternative economic explanations</li>
+                            <li>Validating causal claims versus correlations</li>
+                        </ul>
+
+                        <h4>Unproductive AI Uses</h4>
+                        <p>
+                            Don't paste your data and ask "What economic model explains this?" You need to form your 
+                            own economic interpretation first. AI strengthens your analysis, but cannot replace the 
+                            work of connecting theory to evidence.
+                        </p>
+
+                        <h4>What Students Deliver</h4>
+                        <p>
+                            3-4 pages analyzing your data through economic theory, showing how specific models or 
+                            principles explain the patterns you documented. Include a brief appendix: where did AI help 
+                            refine your economic reasoning, and where did it miss context you understood?
+                        </p>
+                    </div>
+
+                    <PedagogyPanel>
+                        <h4>Why AI here?</h4>
+                        <p>
+                            After students have authentic data, AI helps them think more rigorously about economic 
+                            explanation. It can check logic, identify alternative models, surface omitted variables, 
+                            and challenge weak causal reasoning—exactly what good economics training should provide.
+                        </p>
+
+                        <h4>Student outcomes</h4>
+                        <p>
+                            AI can help students see gaps in their economic logic or consider factors they hadn't 
+                            weighted properly. Effective uses include having AI argue for alternative economic 
+                            explanations, which forces students to either strengthen their analysis or recognize 
+                            they need different models.
+                        </p>
+
+                        <h4>Disciplinary connection</h4>
+                        <p>
+                            In economics, having your analysis challenged is normal—by other economists, conflicting 
+                            data, or policy debates. Learning to use AI as an "analytical skeptic" prepares students 
+                            for economic work where interpretations must withstand scrutiny.
+                        </p>
+                    </PedagogyPanel>
+                </div>
+            </Accordion>
+
+            <Accordion title="Policy Recommendations" badge="Stage 3">
+                <div className="accordion-panels">
+                    <div className="accordion-panel panel-student">
+                        <h4>What Students Learn</h4>
+                        <ul>
+                            <li>How to translate economic analysis into policy proposals</li>
+                            <li>How to anticipate unintended consequences</li>
+                            <li>How to consider implementation challenges</li>
+                        </ul>
+
+                        <h4>AI Permissions: Co-Intelligence Partner</h4>
+                        <p>
+                            Use AI to develop policy implications, identify potential unintended consequences, consider 
+                            political economy constraints, or test robustness of recommendations. AI helps you think 
+                            through implementation while you maintain ownership of the economic logic.
+                        </p>
+
+                        <h4>The Assignment</h4>
+                        <p>
+                            Based on your economic analysis, develop policy recommendations or forecasts. If your data 
+                            showed employment changes, what labor market policies follow from your analysis? If housing 
+                            prices, what zoning or finance policies? Use AI to test your recommendations: "What could 
+                            go wrong?" "What constituencies would oppose this?" "What data would prove me wrong?"
+                        </p>
+
+                        <h4>What Students Deliver</h4>
+                        <p>
+                            2-3 pages of evidence-based policy recommendations, showing clear connection from data → 
+                            economic analysis → policy implications. Address potential counterarguments and 
+                            implementation challenges.
+                        </p>
+                    </div>
+
+                    <PedagogyPanel>
+                        <h4>Why AI here?</h4>
+                        <p>
+                            Policy requires anticipating many considerations—distributional effects, political 
+                            feasibility, unintended consequences, implementation costs. AI can help students work 
+                            through these systematically while they focus on the core economic logic.
+                        </p>
+
+                        <h4>Student outcomes</h4>
+                        <p>
+                            This is where economic analysis becomes actionable. Strong recommendations show clear 
+                            connection from documented data → theoretical interpretation → policy implications, with 
+                            AI helping identify potential challenges.
+                        </p>
+
+                        <h4>Disciplinary connection</h4>
+                        <p>
+                            Economics aims to inform policy and decision-making. This stage ensures students can 
+                            move from analysis to recommendations—the core purpose of applied economic work.
+                        </p>
+                    </PedagogyPanel>
+                </div>
+            </Accordion>
+        </div>
+    );
+}
+
+// ============================================================================
+// CHEMISTRY CASE STUDY
+// ============================================================================
+
+function ChemistryCaseStudy() {
+    return (
+        <div>
+            <div className="assignment-overview">
+                <div className="overview-section">
+                    <h4>What students create</h4>
+                    <p>
+                        A laboratory investigation documenting experimental observations and data, analyzed using 
+                        chemical principles, extended into real-world applications or further experimental design.
+                    </p>
+
+                    <h4>Why this assignment matters</h4>
+                    <p>
+                        Students learn to distinguish between what they observe in the lab and the chemical theories 
+                        they use to explain it. By starting with hands-on experimentation before applying theory, 
+                        they develop the foundational skill of experimental science—gathering authentic data before 
+                        imposing theoretical explanations.
+                    </p>
+                </div>
+            </div>
+
+            <Accordion title="Laboratory Work and Data Collection" badge="Stage 1" defaultOpen={true}>
+                <div className="accordion-panels">
+                    <div className="accordion-panel panel-student">
+                        <h4>What Students Learn</h4>
+                        <ul>
+                            <li>How to conduct experiments systematically</li>
+                            <li>How to document observations without theoretical bias</li>
+                            <li>The difference between data and chemical interpretation</li>
+                        </ul>
+
+                        <h4>AI Permissions: None</h4>
+                        <p>
+                            This stage requires hands-on laboratory work. AI cannot run experiments for you, and 
+                            chemical science depends on your ability to conduct procedures, make observations, and 
+                            document authentic experimental data.
+                        </p>
+
+                        <h4>The Assignment</h4>
+                        <p>
+                            Conduct a laboratory experiment: synthesis, analysis, kinetics study, thermodynamics 
+                            investigation. Follow proper procedure, record all observations (color changes, temperature, 
+                            precipitates, gas evolution, reaction time). Document measurements, unexpected results, 
+                            procedural variations.
+                        </p>
+                        <p>
+                            Keep detailed lab notes: procedure followed, materials used, observations at each step, 
+                            quantitative data, anything surprising. Create data tables. No theoretical explanation 
+                            yet—that's Stage 2. Right now, show you can conduct experiments and collect reliable data.
+                        </p>
+
+                        <h4>Example Topics</h4>
+                        <ul>
+                            <li>Synthesis and purification of an organic compound</li>
+                            <li>Kinetics of a reaction under varying conditions</li>
+                            <li>Thermodynamic properties through calorimetry</li>
+                            <li>Quantitative analysis using spectroscopy or titration</li>
+                        </ul>
+                    </div>
+
+                    <PedagogyPanel>
+                        <h4>Why no AI here?</h4>
+                        <p>
+                            Chemistry is an experimental science. Students need hands-on experience conducting 
+                            procedures, making observations, and troubleshooting when things don't go as planned. 
+                            If they use AI to "help write lab notes" or "explain what should have happened," they 
+                            lose the authentic experimental experience.
+                        </p>
+
+                        <h4>What would break?</h4>
+                        <p>
+                            If students could use AI in this stage, they would shift from documenting what actually 
+                            happened to describing what theory predicts should happen. They would lose the messy 
+                            reality of real experiments—the unexpected results, procedural challenges, and 
+                            troubleshooting that build experimental competence.
+                        </p>
+
+                        <h4>What to expect?</h4>
+                        <p>
+                            Students may initially resist documenting "failures" or unexpected results. However, 
+                            authentic lab work rarely matches theoretical predictions perfectly. Learning to document 
+                            what actually occurred builds scientific integrity and experimental skill.
+                        </p>
+
+                        <h4>Disciplinary connection</h4>
+                        <p>
+                            In chemistry, experimental technique and careful observation are foundational. This stage 
+                            builds those capacities—learning to work with real chemical systems before imposing 
+                            theoretical frameworks.
+                        </p>
+                    </PedagogyPanel>
+                </div>
+            </Accordion>
+
+            <Accordion title="Chemical Analysis and Interpretation" badge="Stage 2">
+                <div className="accordion-panels">
+                    <div className="accordion-panel panel-student">
+                        <h4>What Students Learn</h4>
+                        <ul>
+                            <li>How to interpret experimental data using chemical principles</li>
+                            <li>How to identify sources of error and alternative explanations</li>
+                            <li>How to use AI to strengthen chemical reasoning</li>
+                        </ul>
+
+                        <h4>AI Permissions: Co-Intelligence Partner</h4>
+                        <p>
+                            Now AI becomes your analytical partner. Use it to check stoichiometric calculations, 
+                            validate mechanistic reasoning, identify potential sources of error, suggest alternative 
+                            reaction pathways, or connect your results to broader chemical concepts.
+                        </p>
+
+                        <h4>The Assignment</h4>
+                        <p>
+                            Interpret your experimental results using chemical theory. What principles explain your 
+                            observations? Thermodynamics? Kinetics? Molecular structure? Reaction mechanisms? Use AI 
+                            to stress-test your interpretation: "What could explain the unexpected color?" "How do I 
+                            calculate theoretical yield correctly?" "What other reaction pathways are possible?"
+                        </p>
+
+                        <h4>Productive AI Uses</h4>
+                        <ul>
+                            <li>Validating stoichiometric calculations and unit conversions</li>
+                            <li>Checking mechanistic reasoning against chemical principles</li>
+                            <li>Identifying potential sources of experimental error</li>
+                            <li>Suggesting alternative explanations for unexpected results</li>
+                            <li>Connecting observations to molecular-level phenomena</li>
+                        </ul>
+
+                        <h4>Unproductive AI Uses</h4>
+                        <p>
+                            Don't paste your lab data and ask "What does this mean chemically?" You need to form your 
+                            own chemical interpretation first. AI strengthens your reasoning, but cannot replace the 
+                            analytical work of connecting experimental data to chemical theory.
+                        </p>
+
+                        <h4>What Students Deliver</h4>
+                        <p>
+                            Lab report (3-4 pages) analyzing your experimental results through chemical principles, 
+                            including calculations, mechanistic explanations, and error analysis. Include a brief 
+                            appendix: where did AI help refine your chemical reasoning?
+                        </p>
+                    </div>
+
+                    <PedagogyPanel>
+                        <h4>Why AI here?</h4>
+                        <p>
+                            After students have authentic experimental data, AI helps them think more rigorously about 
+                            chemical explanation. It can validate calculations, suggest mechanisms, identify sources 
+                            of error, and challenge weak reasoning—exactly what good chemistry training should provide.
+                        </p>
+
+                        <h4>Student outcomes</h4>
+                        <p>
+                            AI can help students check complex calculations, consider alternative mechanisms, or 
+                            understand why their results differed from predictions. Effective uses include having AI 
+                            suggest error sources, which forces students to think critically about experimental design.
+                        </p>
+
+                        <h4>Disciplinary connection</h4>
+                        <p>
+                            In chemistry research, having your interpretations challenged by data, peer review, or 
+                            alternative mechanisms is normal. Learning to use AI as a "chemical skeptic" prepares 
+                            students for research where explanations must account for experimental evidence.
+                        </p>
+                    </PedagogyPanel>
+                </div>
+            </Accordion>
+
+            <Accordion title="Application or Experimental Design" badge="Stage 3">
+                <div className="accordion-panels">
+                    <div className="accordion-panel panel-student">
+                        <h4>What Students Learn</h4>
+                        <ul>
+                            <li>How to design follow-up experiments</li>
+                            <li>How to connect lab work to real-world applications</li>
+                            <li>How to anticipate chemical challenges in implementation</li>
+                        </ul>
+
+                        <h4>AI Permissions: As Tool and Partner</h4>
+                        <p>
+                            Use AI for molecular modeling, predicting reaction outcomes, identifying safety concerns, 
+                            suggesting applications in pharmaceuticals, materials, or environmental chemistry. AI helps 
+                            with implementation while you maintain ownership of the chemical logic.
+                        </p>
+
+                        <h4>The Assignment</h4>
+                        <p>
+                            Based on your experimental results, either: (1) design follow-up experiments with modified 
+                            conditions to test specific hypotheses, or (2) propose real-world applications of your 
+                            chemical findings. Use AI to model molecular interactions, predict reaction outcomes, 
+                            identify scaling challenges, or ensure safety considerations.
+                        </p>
+
+                        <h4>What Students Deliver</h4>
+                        <p>
+                            Proposal (2-3 pages) for extended investigation or application, showing clear connection 
+                            from experimental observations → chemical analysis → next steps. Address feasibility, 
+                            safety, and expected outcomes.
+                        </p>
+                    </div>
+
+                    <PedagogyPanel>
+                        <h4>Why AI here?</h4>
+                        <p>
+                            Moving from lab-scale to application requires considering many factors—scaling, safety, 
+                            optimization, alternative reagents. AI can help students work through these systematically 
+                            while they focus on core chemical principles.
+                        </p>
+
+                        <h4>Student outcomes</h4>
+                        <p>
+                            This is where experimental work becomes translational. Strong proposals show clear connection 
+                            from lab observations → chemical interpretation → practical applications, with AI supporting 
+                            the implementation details.
+                        </p>
+
+                        <h4>Disciplinary connection</h4>
+                        <p>
+                            Chemistry bridges fundamental science and practical application. This stage ensures students 
+                            can move from experimental results to real-world impact—the core purpose of applied chemical 
+                            research.
+                        </p>
+                    </PedagogyPanel>
+                </div>
+            </Accordion>
+        </div>
+    );
+}
 function CaseStudies() {
     const [activeTab, setActiveTab] = useState('business');
 
@@ -1367,12 +2067,33 @@ function CaseStudies() {
                     >
                         Studio Art
                     </button>
+                    <button
+                        className={'tab ' + (activeTab === 'psychology' ? 'active' : '')}
+                        onClick={() => setActiveTab('psychology')}
+                    >
+                        Psychology
+                    </button>
+                    <button
+                        className={'tab ' + (activeTab === 'economics' ? 'active' : '')}
+                        onClick={() => setActiveTab('economics')}
+                    >
+                        Economics
+                    </button>
+                    <button
+                        className={'tab ' + (activeTab === 'chemistry' ? 'active' : '')}
+                        onClick={() => setActiveTab('chemistry')}
+                    >
+                        Chemistry
+                    </button>
                 </div>
 
                 {activeTab === 'business' && <BusinessCaseStudy />}
                 {activeTab === 'literature' && <LiteratureCaseStudy />}
                 {activeTab === 'environmental' && <EnvironmentalScienceCaseStudy />}
                 {activeTab === 'art' && <StudioArtCaseStudy />}
+                {activeTab === 'psychology' && <PsychologyCaseStudy />}
+                {activeTab === 'economics' && <EconomicsCaseStudy />}
+                {activeTab === 'chemistry' && <ChemistryCaseStudy />}
             </div>
         </section>
     );
