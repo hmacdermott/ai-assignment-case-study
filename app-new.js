@@ -215,7 +215,7 @@ function Header() {
             <div className="container">
                 <div className="header-content">
                     <div className="logo">
-                        Washington and Lee University Teaching and Learning Center
+                        Harte Center for Teaching and Learning
                     </div>
                     <nav>
                         <a href="#framework" onClick={(e) => { e.preventDefault(); scrollToSection('framework'); }}>
@@ -251,8 +251,7 @@ function Hero() {
                     leveraging AI where it genuinely enhances learning.
                 </p>
                 <p>
-                    This framework, developed by Professor Jeffrey Schatten at Washington and Lee University,
-                    shows how to structure assignments with intentional AI boundaries. The pattern works across
+                    This framework, developed by <a href="https://www.wlu.edu/profile/schatten-jeffrey" target="_blank" rel="noopener noreferrer">Jeff Schatten</a>, Associate Professor of Business Administration, shows how to structure assignments with intentional AI boundaries. The pattern works across
                     disciplines because it honors what makes human thinking irreplaceable—direct observation,
                     creative discovery, primary engagement—while using AI strategically to deepen analysis and
                     strengthen communication.
@@ -1498,7 +1497,7 @@ function Footer() {
                 <hr className="footer-divider" />
                 <div className="footer-content">
                     <p className="footer-copyright">
-                        © 2026 Washington and Lee University. All rights reserved.
+                        © 2026 Harte Center for Teaching and Learning, Washington and Lee University. All rights reserved.
                     </p>
                     <p className="footer-credits">
                         Co-Created with Claude, Gemini, and ChatGPT | Last Updated: {getCurrentDate()}

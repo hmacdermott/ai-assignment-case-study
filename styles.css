@@ -1154,3 +1154,15 @@ footer {
 [data-theme="dark"] .radio-group {
     background: transparent;
 }
+
+/* Hero link styling */
+.hero a {
+    color: rgba(255, 255, 255, 0.95);
+    text-decoration: underline;
+    transition: color 0.2s;
+}
+
+.hero a:hover {
+    color: white;
+    text-decoration: underline;
+}
