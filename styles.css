@@ -186,7 +186,7 @@ nav a:hover {
 .pattern-card {
     border: 1px solid var(--wl-border);
     padding: 2rem;
-    background: white;
+    background: var(--bg-primary);
     transition: box-shadow 0.3s;
 }
 
@@ -250,7 +250,7 @@ button:disabled {
 }
 
 button.secondary, .button.secondary {
-    background: white;
+    background: var(--bg-primary);
     color: var(--wl-navy);
     border: 2px solid var(--wl-navy);
 }
@@ -406,7 +406,7 @@ button.secondary:hover, .button.secondary:hover {
 }
 
 .panel-student {
-    background: white;
+    background: var(--bg-primary);
 }
 
 .panel-pedagogy {
@@ -424,7 +424,7 @@ button.secondary:hover, .button.secondary:hover {
     margin-bottom: 1.5rem;
     padding: 0.5rem 1rem;
     border: 1px solid var(--wl-navy);
-    background: white;
+    background: var(--bg-primary);
     transition: background-color 0.2s;
 }
 
@@ -517,7 +517,7 @@ select {
     border: 1px solid var(--wl-border);
     font-size: 1rem;
     font-family: inherit;
-    background: white;
+    background: var(--bg-primary);
     transition: border-color 0.2s;
 }
 
@@ -620,7 +620,7 @@ textarea {
     width: 2.5rem;
     height: 2.5rem;
     border: 2px solid var(--wl-border);
-    background: white;
+    background: var(--bg-primary);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -663,7 +663,7 @@ textarea {
 
 /* Output Section */
 .output-section {
-    background: white;
+    background: var(--bg-primary);
     border: 1px solid var(--wl-border);
     padding: 2rem;
 }
@@ -725,7 +725,7 @@ textarea {
 .resource-card {
     border: 1px solid var(--wl-border);
     padding: 2rem;
-    background: white;
+    background: var(--bg-primary);
     transition: box-shadow 0.3s;
     cursor: pointer;
 }
@@ -1066,7 +1066,7 @@ footer {
     
     header {
         position: static;
-        background: white;
+        background: var(--bg-primary);
         color: var(--wl-navy);
         border-bottom: 2px solid var(--wl-navy);
     }
@@ -1076,7 +1076,7 @@ footer {
     }
     
     .hero {
-        background: white;
+        background: var(--bg-primary);
         color: var(--wl-navy);
         border-bottom: 2px solid var(--wl-navy);
         page-break-after: avoid;
@@ -1113,4 +1113,44 @@ footer {
         font-size: 0.8em;
         color: var(--wl-gray);
     }
+}
+
+/* Additional dark mode fixes */
+[data-theme="dark"] .panel-student,
+[data-theme="dark"] .panel-pedagogy,
+[data-theme="dark"] .accordion-content,
+[data-theme="dark"] button.secondary,
+[data-theme="dark"] .button.secondary {
+    background: var(--bg-secondary);
+    border-color: var(--wl-border);
+}
+
+[data-theme="dark"] button.secondary,
+[data-theme="dark"] .button.secondary {
+    color: var(--wl-navy);
+}
+
+[data-theme="dark"] .footer-divider {
+    border-color: var(--wl-border);
+}
+
+[data-theme="dark"] .resource-icon {
+    opacity: 0.9;
+}
+
+[data-theme="dark"] .progress-step {
+    background: var(--bg-secondary);
+}
+
+[data-theme="dark"] .progress-step.active {
+    background: var(--wl-navy);
+}
+
+[data-theme="dark"] .progress-step.completed {
+    background: var(--wl-navy-dark);
+}
+
+[data-theme="dark"] .checkbox-group,
+[data-theme="dark"] .radio-group {
+    background: transparent;
 }
