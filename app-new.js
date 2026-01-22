@@ -2177,11 +2177,13 @@ function Footer() {
             <div className="container">
                 <hr className="footer-divider" />
                 <div className="footer-content">
-                    <img
-                        src="harte-center-logo.png"
-                        alt="Harte Center for Teaching and Learning"
-                        className="footer-logo"
-                    />
+                    <a href="https://www.wlu.edu/harte-center" target="_blank" rel="noopener noreferrer">
+                        <img
+                            src="harte-center-logo.png"
+                            alt="Harte Center for Teaching and Learning"
+                            className="footer-logo"
+                        />
+                    </a>
                     <p className="footer-copyright">
                         © 2026 Harte Center for Teaching and Learning, Washington and Lee University. All rights reserved.
                     </p>
