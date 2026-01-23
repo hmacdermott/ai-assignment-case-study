@@ -382,15 +382,9 @@ function Accordion({ title, badge, children, defaultOpen = false }) {
 // ============================================================================
 
 function PedagogyPanel({ children }) {
-    const [isVisible, setIsVisible] = useState(false);
-
     return (
         <div className="accordion-panel panel-pedagogy">
-            <button className="pedagogy-toggle" onClick={() => setIsVisible(!isVisible)}>
-                <span>{isVisible ? '▼' : '▶'}</span>
-                <span>Pedagogical Reasoning</span>
-            </button>
-            <div className={`pedagogy-content ${isVisible ? 'visible' : ''}`}>
+            <div className="pedagogy-content">
                 {children}
             </div>
         </div>

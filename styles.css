@@ -1,5 +1,5 @@
 /* Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&family=Roboto:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&family=Roboto:wght@300;400;700&family=Caveat:wght@400;500;600;700&display=swap');
 
 /* Reset and Base Styles */
 * {
@@ -479,37 +479,53 @@ button.secondary:hover, .button.secondary:hover {
 
 .panel-student {
     background: var(--bg-primary);
+    border-left: 4px solid var(--wl-navy);
+    padding: 2rem;
 }
 
 .panel-pedagogy {
-    background: #FAFAFA;
+    background: #FFFEF8;
+    background-image:
+        repeating-linear-gradient(
+            transparent,
+            transparent 31px,
+            #E8E5D8 31px,
+            #E8E5D8 32px
+        );
+    background-size: 100% 32px;
+    border-left: 3px solid #E74C3C;
+    padding: 2rem 2rem 2rem 3rem;
+    position: relative;
 }
 
-.pedagogy-toggle {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: var(--wl-navy);
-    font-weight: 600;
-    font-size: 0.95rem;
-    cursor: pointer;
-    margin-bottom: 1.5rem;
-    padding: 0.5rem 1rem;
-    border: 1px solid var(--wl-navy);
-    background: var(--bg-primary);
-    transition: background-color 0.2s;
-}
-
-.pedagogy-toggle:hover {
-    background: var(--wl-light-gray);
+.panel-pedagogy::before {
+    content: '';
+    position: absolute;
+    left: 2.5rem;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: #E74C3C;
+    opacity: 0.3;
 }
 
 .pedagogy-content {
-    display: none;
+    display: block;
+    font-family: 'Caveat', cursive;
+    font-size: 1.3rem;
+    line-height: 2;
+    color: #2C3E50;
+    font-weight: 600;
 }
 
-.pedagogy-content.visible {
-    display: block;
+.pedagogy-content strong {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #C0392B;
+}
+
+.pedagogy-content p {
+    margin-bottom: 1.5rem;
 }
 
 .accordion-panel h4 {
@@ -1206,12 +1222,35 @@ footer {
 
 /* Additional dark mode fixes */
 [data-theme="dark"] .panel-student,
-[data-theme="dark"] .panel-pedagogy,
 [data-theme="dark"] .accordion-content,
 [data-theme="dark"] button.secondary,
 [data-theme="dark"] .button.secondary {
     background: var(--bg-secondary);
     border-color: var(--wl-border);
+}
+
+[data-theme="dark"] .panel-pedagogy {
+    background: #2A2520;
+    background-image:
+        repeating-linear-gradient(
+            transparent,
+            transparent 31px,
+            #3A352D 31px,
+            #3A352D 32px
+        );
+    border-left-color: #C0392B;
+}
+
+[data-theme="dark"] .panel-pedagogy::before {
+    background: #C0392B;
+}
+
+[data-theme="dark"] .pedagogy-content {
+    color: #E8D7C3;
+}
+
+[data-theme="dark"] .pedagogy-content strong {
+    color: #E74C3C;
 }
 
 [data-theme="dark"] button.secondary,
