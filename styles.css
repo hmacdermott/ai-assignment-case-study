@@ -1166,11 +1166,17 @@ footer {
         right: 1rem;
         flex-direction: row;
     }
-    
+
     .utility-btn {
         width: 44px;
         height: 44px;
         font-size: 1.1rem;
+    }
+
+    /* Larger handwriting font on mobile for better readability */
+    [data-handwriting="reenie"] .pedagogy-content {
+        font-size: 1.8rem !important;
+        line-height: 1.2;
     }
 }
 
