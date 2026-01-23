@@ -3221,11 +3221,18 @@ function AssignmentDesigner() {
 
 function UtilityButtons() {
     const [theme, setTheme] = useState('light');
+    const [handwritingFont, setHandwritingFont] = useState('architects');
 
     const toggleTheme = () => {
         const newTheme = theme === 'light' ? 'dark' : 'light';
         setTheme(newTheme);
         document.documentElement.setAttribute('data-theme', newTheme);
+    };
+
+    const toggleFont = () => {
+        const newFont = handwritingFont === 'architects' ? 'reenie' : 'architects';
+        setHandwritingFont(newFont);
+        document.documentElement.setAttribute('data-handwriting', newFont);
     };
 
     const handleShare = async () => {
@@ -3264,6 +3271,14 @@ function UtilityButtons() {
                 aria-label={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
             >
                 {theme === 'light' ? '🌙' : '☀️'}
+            </button>
+            <button
+                className="utility-btn"
+                onClick={toggleFont}
+                title={handwritingFont === 'architects' ? 'Switch to Reenie Beanie font' : 'Switch to Architects Daughter font'}
+                aria-label="Toggle handwriting font"
+            >
+                ✍️
             </button>
             <button
                 className="utility-btn"

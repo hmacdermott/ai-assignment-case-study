@@ -518,8 +518,8 @@ button.secondary:hover, .button.secondary:hover {
     font-weight: 400;
 }
 
-/* Alternate font for even accordions */
-.accordion:nth-child(even) .pedagogy-content {
+/* Reenie Beanie font option */
+[data-handwriting="reenie"] .pedagogy-content {
     font-family: 'Reenie Beanie', cursive;
     font-size: 1.6rem;
     line-height: 1.6;
