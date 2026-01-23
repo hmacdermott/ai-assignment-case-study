@@ -2182,6 +2182,16 @@ function Footer() {
         plaiCredits[Math.floor(Math.random() * plaiCredits.length)]
     );
 
+    // Randomize feedback link text
+    const feedbackTexts = [
+        "Have Feedback for Us?",
+        "Share Your Feedback",
+        "Send Anonymous Feedback"
+    ];
+    const [feedbackText] = React.useState(() =>
+        feedbackTexts[Math.floor(Math.random() * feedbackTexts.length)]
+    );
+
     // Randomize AI transparency statement
     const aiStatements = [
         "Content conceptualized and directed by human educators, with a combination of human-written and AI-generated material, all reviewed and edited by humans.",
@@ -2224,11 +2234,11 @@ function Footer() {
                     <p className="footer-credit-wrapper">
                         <a href="https://academicai.academic.wlu.edu/plai-lab/" target="_blank" rel="noopener noreferrer" className="footer-credit-link">
                             {plaiCredit}
-                        </a>
+                        </a> | Last Updated: {getLastModified()}
                     </p>
                     <p className="footer-copyright">
-                        © 2026 <a href="https://www.wlu.edu/harte-center" target="_blank" rel="noopener noreferrer">Houston H. Harte Center for Teaching and Learning</a> at Washington and Lee University. All rights reserved.<br />
-                        Co-Created with Claude, Gemini, and ChatGPT | Last Updated: {getLastModified()}
+                        © 2026 <a href="https://www.wlu.edu/harte-center" target="_blank" rel="noopener noreferrer">Houston H. Harte Center for Teaching and Learning</a> at Washington and Lee University<br />
+                        <a href="https://wluniversity.qualtrics.com/jfe/form/SV_cY2m5oe2zHKpjQW" target="_blank" rel="noopener noreferrer" className="footer-feedback-link">{feedbackText}</a>
                     </p>
                     <div className="ai-statement-container">
                         <em className="footer-statement">{aiStatement}</em>
