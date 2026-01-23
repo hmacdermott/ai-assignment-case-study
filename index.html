@@ -2170,49 +2170,74 @@ function ResourceLibrary() {
 // ============================================================================
 
 function Footer() {
-    const handleCopyDisclaimer = () => {
-        const disclaimerText = "Human-conceptualized resource combining human-written content and AI-generated material under human direction, editing, and review.";
-        navigator.clipboard.writeText(disclaimerText).then(() => {
-            alert('Disclaimer copied to clipboard!');
-        }).catch(err => {
-            console.error('Failed to copy:', err);
-        });
+    const [copiedState, setCopiedState] = React.useState(false);
+
+    // Randomize PLAI Lab credit text
+    const plaiCredits = [
+        "Designed by the PLAI Lab",
+        "Powered by the PLAI Lab",
+        "Created by the PLAI Lab"
+    ];
+    const [plaiCredit] = React.useState(() =>
+        plaiCredits[Math.floor(Math.random() * plaiCredits.length)]
+    );
+
+    // Randomize AI transparency statement
+    const aiStatements = [
+        "Content conceptualized and directed by human educators, with a combination of human-written and AI-generated material, all reviewed and edited by humans.",
+        "Human-conceptualized resource combining human-written content and AI-generated material under human direction, editing, and review.",
+        "Content developed through human-AI collaboration: conceptualized and directed by educators, drafted by humans and AI, edited and reviewed by humans.",
+        "Human-directed resource combining human-written and AI-generated content, with all content reviewed and edited by humans.",
+        "Content created through human-AI collaboration under human direction and review."
+    ];
+    const [aiStatement] = React.useState(() =>
+        aiStatements[Math.floor(Math.random() * aiStatements.length)]
+    );
+
+    // Get dynamic last updated date
+    const getLastModified = () => {
+        const lastModified = new Date(document.lastModified);
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        return lastModified.toLocaleDateString('en-US', options);
     };
 
-    // Get current date for Last Updated
-    const getCurrentDate = () => {
-        const date = new Date();
-        const options = { year: 'numeric', month: 'long', day: 'numeric' };
-        return date.toLocaleDateString('en-US', options);
+    const handleCopyStatement = () => {
+        navigator.clipboard.writeText(aiStatement).then(() => {
+            setCopiedState(true);
+            setTimeout(() => setCopiedState(false), 2000);
+        }).catch(err => {
+            console.error('We couldn\'t copy the transparency statement to your clipboard.', err);
+        });
     };
 
     return (
         <footer>
             <div className="container">
-                <hr className="footer-divider" />
                 <div className="footer-content">
-                    <a href="https://academicai.academic.wlu.edu/plai-lab/" target="_blank" rel="noopener noreferrer">
+                    <a href="https://academicai.academic.wlu.edu/plai-lab/" target="_blank" rel="noopener noreferrer" className="footer-logo-link">
                         <img
                             src="plai-lab-logo.gif"
                             alt="PLAI Lab"
                             className="footer-logo"
                         />
                     </a>
-                    <p style={{textAlign: 'center', fontSize: '0.9rem', color: 'var(--wl-gray)', marginBottom: '1rem'}}>
-                        Developed by the PLAI Lab
+                    <p className="footer-credit-wrapper">
+                        <a href="https://academicai.academic.wlu.edu/plai-lab/" target="_blank" rel="noopener noreferrer" className="footer-credit-link">
+                            {plaiCredit}
+                        </a>
                     </p>
                     <p className="footer-copyright">
-                        © 2026 <a href="https://www.wlu.edu/harte-center" target="_blank" rel="noopener noreferrer">Harte Center for Teaching and Learning</a>, Washington and Lee University. All rights reserved.
+                        © 2026 <a href="https://www.wlu.edu/harte-center" target="_blank" rel="noopener noreferrer">Houston H. Harte Center for Teaching and Learning at Washington and Lee University</a>. All rights reserved.
                     </p>
                     <p className="footer-credits">
-                        Co-Created with Claude, Gemini, and ChatGPT | Last Updated: {getCurrentDate()}
+                        Co-Created with Claude, Gemini, and ChatGPT | Last Updated: {getLastModified()}
                     </p>
-                    <p className="footer-disclaimer">
-                        Human-conceptualized resource combining human-written content and AI-generated material under human direction, editing, and review.
-                    </p>
-                    <button className="footer-copy-btn" onClick={handleCopyDisclaimer} aria-label="Copy disclaimer text">
-                        Copy
-                    </button>
+                    <div className="ai-statement-container">
+                        <em className="footer-statement">{aiStatement}</em>
+                        <button className="footer-copy-btn" onClick={handleCopyStatement} aria-label="Copy transparency statement">
+                            {copiedState ? 'Copied!' : 'Copy'}
+                        </button>
+                    </div>
                 </div>
             </div>
         </footer>

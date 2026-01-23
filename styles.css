@@ -879,15 +879,11 @@ textarea {
 
 /* Footer */
 footer {
-    padding: 3rem 0 2rem;
-    margin-top: 5rem;
     background: #ffffff;
-}
-
-.footer-divider {
-    border: none;
     border-top: 1px solid #E5E7EB;
-    margin: 0 0 2rem 0;
+    padding: 24px 20px 30px;
+    text-align: center;
+    margin-top: 32px;
 }
 
 .footer-content {
@@ -895,34 +891,75 @@ footer {
     position: relative;
 }
 
-.footer-copyright,
-.footer-credits,
-.footer-disclaimer {
-    color: #6B7280;
-    font-size: 13px;
-    margin: 0.5rem 0;
-    line-height: 1.6;
-}
-
-.footer-disclaimer {
-    font-style: italic;
+.footer-credit-wrapper {
+    text-align: center;
+    font-size: 0.9rem;
     margin-bottom: 1rem;
 }
 
+.footer-credit-link {
+    color: #6B7280;
+    text-decoration: none;
+}
+
+.footer-credit-link:hover {
+    color: var(--wl-navy);
+    text-decoration: underline;
+}
+
+.footer-copyright,
+.footer-credits {
+    color: #6B7280;
+    font-size: 14px;
+    margin: 15px 0;
+    line-height: 1.6;
+}
+
+.footer-copyright a {
+    color: #6B7280;
+    text-decoration: none;
+}
+
+.footer-copyright a:hover {
+    color: var(--wl-navy);
+    text-decoration: underline;
+}
+
+.ai-statement-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 8px;
+    flex-wrap: wrap;
+    max-width: 100%;
+}
+
+.footer-statement {
+    text-align: center;
+    flex: 1 1 auto;
+    min-width: 0;
+    font-style: italic;
+    color: #6B7280;
+    font-size: 13px;
+}
+
 .footer-copy-btn {
-    background: var(--wl-navy);
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
+    background: none;
+    border: 1px solid #E5E7EB;
+    color: #6B7280;
+    padding: 4px 8px;
+    border-radius: 4px;
     font-size: 12px;
     cursor: pointer;
-    border-radius: 4px;
-    transition: background 0.2s;
-    margin-top: 0.5rem;
+    transition: all 0.2s ease;
+    white-space: nowrap;
 }
 
 .footer-copy-btn:hover {
-    background: var(--wl-navy-dark);
+    background: var(--wl-navy);
+    color: white;
+    border-color: var(--wl-navy);
 }
 
 .footer-copy-btn:active {
@@ -1286,8 +1323,8 @@ footer {
     display: none;
 }
 
-[data-theme="dark"] .footer-divider {
-    border-color: var(--wl-border);
+[data-theme="dark"] .footer-credit-wrapper {
+    display: none;
 }
 
 [data-theme="dark"] .resource-icon {
@@ -1352,6 +1389,11 @@ footer {
 @media (max-width: 768px) {
     .footer-logo {
         max-width: 180px;
+    }
+
+    .ai-statement-container {
+        flex-direction: column;
+        gap: 6px;
     }
 }
 
