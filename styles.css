@@ -512,7 +512,7 @@ button.secondary:hover, .button.secondary:hover {
 .pedagogy-content {
     display: block;
     font-family: 'Caveat', cursive;
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     line-height: 2;
     color: #2C3E50;
     font-weight: 600;
@@ -525,10 +525,12 @@ button.secondary:hover, .button.secondary:hover {
     color: #C0392B;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    display: block;
+    margin-bottom: 1rem;
 }
 
 .pedagogy-content p {
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
 }
 
 .accordion-panel h4 {
