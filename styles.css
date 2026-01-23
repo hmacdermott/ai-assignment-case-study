@@ -939,9 +939,9 @@ footer {
 }
 
 .footer-copy-btn {
-    background: none;
-    border: 1px solid #E5E7EB;
-    color: #6B7280;
+    background: var(--wl-navy);
+    color: white;
+    border: 1px solid var(--wl-navy);
     padding: 4px 8px;
     border-radius: 4px;
     font-size: 12px;
@@ -953,9 +953,9 @@ footer {
 }
 
 .footer-copy-btn:hover {
-    background: var(--wl-navy);
-    color: white;
-    border-color: var(--wl-navy);
+    background: none;
+    color: #6B7280;
+    border-color: #E5E7EB;
 }
 
 .footer-copy-btn:active {
