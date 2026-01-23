@@ -2227,17 +2227,15 @@ function Footer() {
                         </a>
                     </p>
                     <p className="footer-copyright">
-                        © 2026 <a href="https://www.wlu.edu/harte-center" target="_blank" rel="noopener noreferrer">Houston H. Harte Center for Teaching and Learning at Washington and Lee University</a>. All rights reserved.
-                    </p>
-                    <p className="footer-credits">
+                        © 2026 <a href="https://www.wlu.edu/harte-center" target="_blank" rel="noopener noreferrer">Houston H. Harte Center for Teaching and Learning</a> at Washington and Lee University. All rights reserved.<br />
                         Co-Created with Claude, Gemini, and ChatGPT | Last Updated: {getLastModified()}
                     </p>
                     <div className="ai-statement-container">
                         <em className="footer-statement">{aiStatement}</em>
-                        <button className="footer-copy-btn" onClick={handleCopyStatement} aria-label="Copy transparency statement">
-                            {copiedState ? 'Copied!' : 'Copy'}
-                        </button>
                     </div>
+                    <button className="footer-copy-btn" onClick={handleCopyStatement} aria-label="Copy transparency statement">
+                        {copiedState ? 'Copied!' : 'Copy'}
+                    </button>
                 </div>
             </div>
         </footer>
