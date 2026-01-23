@@ -1,5 +1,5 @@
 /* Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&family=Roboto:wght@300;400;700&family=Caveat:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&family=Roboto:wght@300;400;700&family=Caveat:wght@400;500;600;700&family=Permanent+Marker&display=swap');
 
 /* Reset and Base Styles */
 * {
@@ -512,16 +512,19 @@ button.secondary:hover, .button.secondary:hover {
 .pedagogy-content {
     display: block;
     font-family: 'Caveat', cursive;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     line-height: 2;
     color: #2C3E50;
     font-weight: 600;
 }
 
 .pedagogy-content strong {
-    font-size: 1.4rem;
-    font-weight: 700;
+    font-family: 'Permanent Marker', cursive;
+    font-size: 1.2rem;
+    font-weight: 400;
     color: #C0392B;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .pedagogy-content p {
@@ -1251,6 +1254,8 @@ footer {
 
 [data-theme="dark"] .pedagogy-content strong {
     color: #E74C3C;
+    font-family: 'Permanent Marker', cursive;
+    text-transform: uppercase;
 }
 
 [data-theme="dark"] button.secondary,
