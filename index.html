@@ -2002,24 +2002,34 @@ function ChemistryCaseStudy() {
         </div>
     );
 }
-function CaseStudies() {
-    const [activeTab, setActiveTab] = useState('business');
+// Main Jeff Schatten Business Case
+function JeffSchattenCase() {
+    return (
+        <section id="jeff-schatten">
+            <div className="container-wide">
+                <h2>The Assignment: Organizational Analysis</h2>
+                <p style={{fontSize: '1.1rem', marginBottom: '2rem', color: 'var(--wl-gray)'}}>
+                    Developed by <a href="https://www.wlu.edu/profile/schatten-jeffrey" target="_blank" rel="noopener noreferrer">Jeff Schatten</a>, Associate Professor of Business Administration, for his Managing Uncertainty course (undergraduate 200-level).
+                </p>
+                <BusinessCaseStudy />
+            </div>
+        </section>
+    );
+}
+
+// Disciplinary Example Cases
+function DisciplinaryExamples() {
+    const [activeTab, setActiveTab] = useState('literature');
 
     return (
-        <section id="examples">
+        <section id="examples" style={{background: 'var(--wl-pale-blue)', paddingTop: '4rem', paddingBottom: '4rem', marginTop: '4rem'}}>
             <div className="container-wide">
-                <h2>See the Framework in Action</h2>
-                <p>
-                    See Jeff Schatten's Business assignment demonstrate the framework in action, with examples showing how this approach could be adapted across other disciplines to maintain rigor while embracing generative tools.
+                <h2>Adapting the Framework Across Disciplines</h2>
+                <p style={{marginBottom: '2rem'}}>
+                    These illustrative examples show how the staged AI assignment framework could be adapted to maintain disciplinary rigor while embracing generative tools in different fields.
                 </p>
 
                 <div className="tabs">
-                    <button
-                        className={'tab ' + (activeTab === 'business' ? 'active' : '')}
-                        onClick={() => setActiveTab('business')}
-                    >
-                        Business
-                    </button>
                     <button
                         className={'tab ' + (activeTab === 'literature' ? 'active' : '')}
                         onClick={() => setActiveTab('literature')}
@@ -2058,7 +2068,6 @@ function CaseStudies() {
                     </button>
                 </div>
 
-                {activeTab === 'business' && <BusinessCaseStudy />}
                 {activeTab === 'literature' && <LiteratureCaseStudy />}
                 {activeTab === 'environmental' && <EnvironmentalScienceCaseStudy />}
                 {activeTab === 'art' && <StudioArtCaseStudy />}
@@ -3315,7 +3324,8 @@ function App() {
             <Header />
             <Hero />
             <ThreeStagePattern />
-            <CaseStudies />
+            <JeffSchattenCase />
+            <DisciplinaryExamples />
             <AssignmentDesigner />
             <ResourceLibrary />
             <Footer />
