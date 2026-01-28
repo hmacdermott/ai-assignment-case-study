@@ -2654,18 +2654,103 @@ function AssignmentDesigner() {
                   xmlns='http://www.w3.org/TR/REC-html40'>
             <head>
                 <meta charset='utf-8'>
+                <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
                 <title>Staged AI Assignment</title>
+                <!--[if gte mso 9]>
+                <xml>
+                    <w:WordDocument>
+                        <w:View>Print</w:View>
+                        <w:Zoom>100</w:Zoom>
+                        <w:DoNotOptimizeForBrowser/>
+                    </w:WordDocument>
+                </xml>
+                <![endif]-->
                 <style>
-                    body { font-family: Calibri, sans-serif; font-size: 11pt; line-height: 1.6; }
-                    h1 { color: #003366; font-size: 20pt; font-weight: bold; margin-top: 12pt; margin-bottom: 6pt; }
-                    h2 { color: #003366; font-size: 16pt; font-weight: bold; margin-top: 10pt; margin-bottom: 6pt; border-bottom: 1pt solid #E5E7EB; }
-                    h3 { color: #003366; font-size: 14pt; font-weight: bold; margin-top: 8pt; margin-bottom: 4pt; }
-                    p { margin-top: 0pt; margin-bottom: 8pt; }
-                    ul, ol { margin-left: 0.5in; }
-                    li { margin-bottom: 4pt; }
-                    strong { font-weight: bold; color: #003366; }
-                    .meta { background-color: #F3F4F6; padding: 12pt; margin-bottom: 12pt; border-left: 4pt solid #003366; }
-                    .stage { margin-bottom: 12pt; padding: 12pt; background-color: #FAFAFA; border-left: 4pt solid #003366; }
+                    /* Font Definitions */
+                    @font-face {
+                        font-family: "Times New Roman";
+                        panose-1: 2 2 6 3 5 4 5 2 3 4;
+                    }
+                    /* Style Definitions */
+                    body {
+                        font-family: "Times New Roman", serif;
+                        font-size: 12pt;
+                        line-height: 1.5;
+                        margin: 1in;
+                    }
+                    h1 {
+                        font-family: "Times New Roman", serif;
+                        color: #003366;
+                        font-size: 18pt;
+                        font-weight: bold;
+                        margin-top: 24pt;
+                        margin-bottom: 12pt;
+                        page-break-after: avoid;
+                    }
+                    h2 {
+                        font-family: "Times New Roman", serif;
+                        color: #003366;
+                        font-size: 16pt;
+                        font-weight: bold;
+                        margin-top: 18pt;
+                        margin-bottom: 10pt;
+                        border-bottom: 1pt solid #E5E7EB;
+                        padding-bottom: 4pt;
+                        page-break-after: avoid;
+                    }
+                    h3 {
+                        font-family: "Times New Roman", serif;
+                        color: #003366;
+                        font-size: 14pt;
+                        font-weight: bold;
+                        margin-top: 12pt;
+                        margin-bottom: 6pt;
+                        page-break-after: avoid;
+                    }
+                    h4 {
+                        font-family: "Times New Roman", serif;
+                        color: #003366;
+                        font-size: 12pt;
+                        font-weight: bold;
+                        margin-top: 12pt;
+                        margin-bottom: 6pt;
+                        page-break-after: avoid;
+                    }
+                    p {
+                        font-family: "Times New Roman", serif;
+                        margin-top: 0pt;
+                        margin-bottom: 12pt;
+                        text-align: justify;
+                    }
+                    ul, ol {
+                        font-family: "Times New Roman", serif;
+                        margin-left: 0.5in;
+                        margin-bottom: 12pt;
+                    }
+                    li {
+                        margin-bottom: 6pt;
+                        text-align: justify;
+                    }
+                    strong {
+                        font-weight: bold;
+                        color: #003366;
+                    }
+                    em {
+                        font-style: italic;
+                    }
+                    .meta {
+                        background-color: #F3F4F6;
+                        padding: 12pt;
+                        margin-bottom: 12pt;
+                        border-left: 4pt solid #003366;
+                    }
+                    .stage {
+                        margin-bottom: 18pt;
+                        padding: 12pt;
+                        background-color: #FAFAFA;
+                        border-left: 4pt solid #003366;
+                        page-break-inside: avoid;
+                    }
                 </style>
             </head>
             <body>
@@ -2676,11 +2761,11 @@ function AssignmentDesigner() {
 
         // Create blob with proper Word MIME type
         const blob = new Blob(['\ufeff', docxHtml], {
-            type: 'application/vnd.ms-word'
+            type: 'application/msword'
         });
 
-        // Generate filename
-        const filename = 'staged-assignment.docx';
+        // Generate filename - use .doc extension for HTML-based Word format
+        const filename = 'staged-assignment.doc';
 
         // Create download link
         const url = URL.createObjectURL(blob);
@@ -3230,7 +3315,7 @@ function AssignmentDesigner() {
                                 Download File
                             </button>
                             <button className="secondary" onClick={handleDownloadDocx}>
-                                Download as Word (.docx)
+                                Download as Word (.doc)
                             </button>
                             <button className="secondary" onClick={handlePrint}>
                                 Print / Save as PDF
