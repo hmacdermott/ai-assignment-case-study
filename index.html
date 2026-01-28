@@ -2597,7 +2597,17 @@ function AssignmentDesigner() {
     };
 
     const handlePrint = () => {
-        window.print();
+        // Add class to body to trigger designer-only print styles
+        document.body.classList.add('print-designer-only');
+
+        // Print after a brief delay to ensure class is applied
+        setTimeout(() => {
+            window.print();
+            // Remove class after print dialog closes
+            setTimeout(() => {
+                document.body.classList.remove('print-designer-only');
+            }, 100);
+        }, 50);
     };
 
     const handleCopyRichText = async () => {

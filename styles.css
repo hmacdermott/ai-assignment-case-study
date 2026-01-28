@@ -1469,31 +1469,31 @@ textarea.error {
 }
 
 /* =========================================================================
-   PRINT STYLES
+   PRINT STYLES FOR DESIGNER OUTPUT
    ========================================================================= */
 
 @media print {
-    /* Hide everything except the output section */
-    body > *:not(#root),
-    header,
-    footer,
-    .hero,
-    nav,
-    .utility-buttons,
-    .output-actions,
-    .output-tabs,
-    .progress-indicator,
-    .form-navigation,
-    .form-section,
-    .form-intro,
-    .form-group,
-    button,
-    input,
-    textarea,
-    select,
-    .no-print,
-    section:not(#designer),
-    #designer > .container > *:not(.output-section) {
+    /* Only hide content when printing from designer (body has print-designer-only class) */
+    body.print-designer-only > *:not(#root),
+    body.print-designer-only header,
+    body.print-designer-only footer,
+    body.print-designer-only .hero,
+    body.print-designer-only nav,
+    body.print-designer-only .utility-buttons,
+    body.print-designer-only .output-actions,
+    body.print-designer-only .output-tabs,
+    body.print-designer-only .progress-indicator,
+    body.print-designer-only .form-navigation,
+    body.print-designer-only .form-section,
+    body.print-designer-only .form-intro,
+    body.print-designer-only .form-group,
+    body.print-designer-only button,
+    body.print-designer-only input,
+    body.print-designer-only textarea,
+    body.print-designer-only select,
+    body.print-designer-only .no-print,
+    body.print-designer-only section:not(#designer),
+    body.print-designer-only #designer > .container > *:not(.output-section) {
         display: none !important;
     }
 
