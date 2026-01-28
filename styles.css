@@ -502,7 +502,7 @@ button.secondary:hover, .button.secondary:hover {
 .pedagogy-content {
     display: block;
     font-family: 'Architects Daughter', cursive;
-    font-size: 1.15rem !important;
+    font-size: 1.25rem !important;
     line-height: 1.8;
     color: #2C3E50;
     font-weight: 400;
@@ -567,7 +567,7 @@ button.secondary:hover, .button.secondary:hover {
     margin: 1rem 0 1.5rem 0;
     padding: 0.5rem 1rem;
     font-style: italic;
-    font-size: 1.05rem;
+    font-size: 1.2rem;
     line-height: 1.7;
 }
 
