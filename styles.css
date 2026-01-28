@@ -559,6 +559,46 @@ button.secondary:hover, .button.secondary:hover {
     text-align: center;
 }
 
+/* Instructor Quotes */
+.instructor-quote {
+    position: relative;
+    margin: 1rem 0 1.5rem 0;
+    padding: 0.5rem 1rem;
+    font-style: italic;
+    font-size: 1.05rem;
+    line-height: 1.7;
+}
+
+.instructor-quote::before {
+    content: '\201C';
+    position: absolute;
+    left: -0.5rem;
+    top: -0.5rem;
+    font-size: 4rem;
+    line-height: 1;
+    color: var(--wl-navy);
+    opacity: 0.3;
+    font-family: Georgia, serif;
+}
+
+.instructor-quote::after {
+    content: '\201D';
+    position: absolute;
+    right: -0.25rem;
+    bottom: -2rem;
+    font-size: 4rem;
+    line-height: 1;
+    color: var(--wl-navy);
+    opacity: 0.3;
+    font-family: Georgia, serif;
+}
+
+[data-theme="dark"] .instructor-quote::before,
+[data-theme="dark"] .instructor-quote::after {
+    color: var(--wl-navy);
+    opacity: 0.4;
+}
+
 /* Form Elements */
 .form-section {
     background: var(--wl-light-gray);
