@@ -1253,33 +1253,211 @@ footer {
 
 /* Print Styles */
 @media print {
-    .utility-buttons {
+    /* Hide unnecessary elements for clean print */
+    .utility-buttons,
+    header nav,
+    footer,
+    .stage-arrow,
+    button,
+    .tabs,
+    .output-tabs,
+    .output-actions {
         display: none !important;
     }
-    
+
+    /* Reset page styles */
+    body {
+        background: white !important;
+        background-image: none !important;
+        color: black !important;
+        font-size: 11pt;
+        line-height: 1.4;
+        margin: 0;
+        padding: 0;
+    }
+
+    body::before {
+        display: none !important;
+    }
+
+    @page {
+        margin: 0.75in;
+        size: letter;
+    }
+
+    /* Compact header */
     header {
         position: static;
-        background: var(--bg-primary);
-        color: var(--wl-navy);
-        border-bottom: 2px solid var(--wl-navy);
+        background: white;
+        color: #003366;
+        border-bottom: 2px solid #003366;
+        padding: 0.5rem 0;
+        margin-bottom: 1rem;
     }
-    
-    header nav {
-        display: none;
+
+    header .logo img {
+        max-height: 30px;
     }
-    
+
+    /* Minimal hero */
     .hero {
-        background: var(--bg-primary);
-        color: var(--wl-navy);
-        border-bottom: 2px solid var(--wl-navy);
+        background: white;
+        color: #003366;
+        padding: 1rem 0;
+        margin-bottom: 1rem;
+        border-bottom: 1px solid #ccc;
         page-break-after: avoid;
     }
-    
-    .pattern-card,
-    .case-card,
-    .resource-card {
+
+    .hero h1 {
+        font-size: 18pt;
+        margin-bottom: 0.5rem;
+        color: #003366;
+    }
+
+    .hero .subheadline,
+    .hero p {
+        font-size: 10pt;
+        margin-bottom: 0.25rem;
+        color: black;
+    }
+
+    /* Compact sections */
+    section {
+        padding: 0.5rem 0 !important;
+        background: white !important;
+    }
+
+    .container,
+    .container-wide {
+        max-width: 100%;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    h2 {
+        font-size: 14pt;
+        margin-top: 1rem;
+        margin-bottom: 0.5rem;
+        color: #003366;
+        page-break-after: avoid;
+    }
+
+    h3 {
+        font-size: 12pt;
+        margin-top: 0.75rem;
+        margin-bottom: 0.4rem;
+        color: #003366;
+        page-break-after: avoid;
+    }
+
+    h4 {
+        font-size: 11pt;
+        margin-top: 0.5rem;
+        margin-bottom: 0.3rem;
+        color: #003366;
+        page-break-after: avoid;
+    }
+
+    p {
+        margin-bottom: 0.4rem;
+        text-align: justify;
+    }
+
+    /* Compact lists */
+    ul, ol {
+        margin: 0.3rem 0 0.5rem 1.5rem;
+        padding: 0;
+    }
+
+    li {
+        margin-bottom: 0.2rem;
+    }
+
+    /* Pattern cards - compact */
+    .pattern-cards {
+        display: block;
+    }
+
+    .pattern-card {
         page-break-inside: avoid;
         box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 0.5rem;
+        padding: 0.5rem;
+        background: white;
+    }
+
+    .pattern-card h3 {
+        font-size: 11pt;
+        margin: 0 0 0.3rem 0;
+    }
+
+    .badge-left {
+        font-size: 14pt;
+        margin-right: 0.5rem;
+    }
+
+    /* Accordion sections */
+    .accordion-header {
+        background: white !important;
+        border: 1px solid #003366;
+        padding: 0.3rem 0.5rem;
+        margin-bottom: 0.3rem;
+        page-break-after: avoid;
+    }
+
+    .accordion-content {
+        display: block !important;
+    }
+
+    .accordion-panels {
+        display: block;
+        background: white;
+    }
+
+    .accordion-panel {
+        page-break-inside: avoid;
+        border: 1px solid #ddd;
+        padding: 0.5rem;
+        margin-bottom: 0.5rem;
+        background: white;
+    }
+
+    .panel-student,
+    .panel-pedagogy {
+        border-left: 3px solid #003366;
+        background: white !important;
+    }
+
+    .pedagogy-content {
+        font-family: "Times New Roman", serif !important;
+        font-size: 10pt !important;
+    }
+
+    /* Compact instructor quotes */
+    .instructor-quote {
+        font-size: 10pt;
+        margin: 0.3rem 0;
+        padding: 0.3rem 0.5rem;
+        border-left: 2px solid #003366;
+    }
+
+    .instructor-quote::before,
+    .instructor-quote::after {
+        display: none;
+    }
+
+    /* Hide large decorative elements */
+    .assignment-overview {
+        margin-bottom: 0.5rem;
+    }
+
+    /* Compact resource sections */
+    .resource-item {
+        page-break-inside: avoid;
+        margin-bottom: 0.5rem;
+        padding: 0.5rem;
         border: 1px solid #ddd;
     }
     
