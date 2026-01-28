@@ -479,7 +479,6 @@ button.secondary:hover, .button.secondary:hover {
 
 .panel-student {
     background: var(--bg-primary);
-    border-left: 4px solid var(--wl-navy);
     padding: 2rem;
 }
 
@@ -493,21 +492,10 @@ button.secondary:hover, .button.secondary:hover {
             #E8E5D8 48px
         );
     background-size: 100% 48px;
-    border-left: 3px solid #E74C3C;
     padding: 2rem 2rem 2rem 3rem;
     position: relative;
 }
 
-.panel-pedagogy::before {
-    content: '';
-    position: absolute;
-    left: 2.5rem;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background: #E74C3C;
-    opacity: 0.3;
-}
 
 .pedagogy-content {
     display: block;
@@ -1296,12 +1284,8 @@ footer {
             #3A352D 47px,
             #3A352D 48px
         );
-    border-left-color: #C0392B;
 }
 
-[data-theme="dark"] .panel-pedagogy::before {
-    background: #C0392B;
-}
 
 [data-theme="dark"] .pedagogy-content {
     color: #E8D7C3;
