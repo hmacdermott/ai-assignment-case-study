@@ -2191,15 +2191,8 @@ function ResourceLibrary() {
 function Footer() {
     const [copiedState, setCopiedState] = React.useState(false);
 
-    // Randomize PLAI Lab credit text
-    const plaiCredits = [
-        "Designed by the PLAI Lab",
-        "Powered by the PLAI Lab",
-        "Created by the PLAI Lab"
-    ];
-    const [plaiCredit] = React.useState(() =>
-        plaiCredits[Math.floor(Math.random() * plaiCredits.length)]
-    );
+    // Credit text
+    const plaiCredit = "Developed by Helen MacDermott based on a framework by Jeff Schatten.";
 
     // Randomize feedback link text
     const feedbackTexts = [
